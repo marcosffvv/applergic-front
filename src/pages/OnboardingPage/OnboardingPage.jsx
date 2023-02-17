@@ -1,61 +1,79 @@
-import React from 'react'
-import { Carousel } from 'primereact/carousel';
-import imgOnboarding1 from "../../assets/imgOnboarding1.png";
+import React from "react";
+import { Carousel } from "primereact/carousel";
+import { Link } from "react-router-dom";
+import Onboarding1 from "../../assets/Onboarding1.png";
+import Onboarding2 from "../../assets/Onboarding2.png";
+import Onboarding3 from "../../assets/Onboarding3.png";
+import Onboarding4 from "../../assets/Onboarding4.png";
 import ApplergicTextoLogo from "../../assets/ApplergicTextoLogo.png";
 import "./OnboardingPage.scss";
-//import PagesService from '../../components/pagesService';
-
-
+import InicioComponent from "../../components/InicioComponent/InicioComponent";
+import { useState } from "react";
 
 const OnboardingPage = () => {
-  const paginas = [{img: imgOnboarding1, description: "aksjdflkjdlfknd"},{img: imgOnboarding1, description: "aksgggfdfdfhola"}];  // const responsiveOptions = [
-  //     {
-  //         breakpoint: '1199px',
-  //         numVisible: 1,
-  //         numScroll: 1
-  //     },
-  //     {
-  //         breakpoint: '991px',
-  //         numVisible: 2,
-  //         numScroll: 1
-  //     },
-  //     {
-  //         breakpoint: '767px',
-  //         numVisible: 1,
-  //         numScroll: 1
-  //     }
-  // ];
-  
+  const paginas = [
+    {
+      img: Onboarding1,
+      titulo: "Bienvenido a Applergic",
+      description: "Escanea el codigo de barras de tu producto y Applergic te dirá si es apto para ti.",
+    },
+    {
+      img: Onboarding2,
+      description: "Lleva tu Diario de compras y actividades",
+    },
+    {
+      img: Onboarding3,
+      description: "En caso de emergencia nos pondremos en contacto con la persona que nos digas.",
+    },
+    {
+      img: Onboarding4,
+      description: "Viaja donde quieras. Tendrás a tu disposicion un traductor off-line y tu informe de alergias e intolerancias traducido al idioma local.",
+    },
+  ];
+
+  const [intro, setIntro] = useState(true);
+
+  setTimeout(() => {
+    setIntro(false);
+  }, 1000);
+
   const carouselTemplate = (pagina) => {
     return (
-        <div className="border-1 surface-border border-round m-2 text-center py-5 px-3">
-
-            <div className="c-imagen">
-                <img className="img-carousel" src={pagina.img} alt="imgOnboarding1"/>
-            </div>
-
-            <div>
-                <h4 className="texto">{pagina.description}</h4>
-                
-                {/* <div className="mt-5 flex flex-wrap gap-2 justify-content-center">
-                    <Button icon="pi pi-search" className="p-button p-button-rounded" />
-                    <Button icon="pi pi-star-fill" className="p-button-success p-button-rounded" />
-                </div> */}
-            </div>
+      <div className="onboarding">
+        <div className="image-container">
+          <img className="image-container__img-carousel" src={pagina.img} alt="imgOnboarding1"/>
         </div>
+
+        <div className="text-container">
+          <h4 className="text-container__texto">{pagina.titulo}</h4>
+          <h4 className="text-container__texto">{pagina.description}</h4>
+        </div>
+      </div>
     );
   };
 
-
   return (
-    <div>
-    
-    <div className="c-logo-texto">
-                <img src={ApplergicTextoLogo} alt="ApplergicTextoLogo" className="img-logo-texto" />
-            </div>
-      <Carousel value={paginas} numVisible={1} numScroll={1} itemTemplate={carouselTemplate} />
-    </div>
-  )
-}
+    <>
+      {intro ? (
+        <div className="container-inicio">
+          <InicioComponent></InicioComponent>
+        </div>
+      ) : (
+        <div className="container-main">
+          <div className="imglogo">
+            <img src={ApplergicTextoLogo} alt="ApplergicTextoLogo" className="img-logo-texto"/>
+          </div>
 
-export default OnboardingPage
+          <Carousel value={paginas} numVisible={1} numScroll={1} itemTemplate={carouselTemplate}/>
+
+          <div className="nav-container">
+            <Link to="/login" className="nav-link">Saltar</Link>
+            <Link to="/login" className="nav-link">Siguiente</Link>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default OnboardingPage;
