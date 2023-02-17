@@ -4,10 +4,10 @@ import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 
 import OnboardingPage from './pages/OnboardingPage/OnboardingPage';
 import LoginPage from './pages/LoginPage/LoginPage';
-// import RegisterPage from '';
-// import ProfilePage from '';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ProfileAlergicPage from './pages/ProfileAlergicPage/ProfileAlergicPage';
-// import ProfileEmergencyPage from '';
+import ProfileEmergencyPage from './pages/ProfileEmergencyPage/ProfileEmergencyPage';
 import ProfileAlergicConfirmPage from './pages/ProfileAlergicConfirmPage/ProfileAlergicConfirmPage';
 import ProfileEndPage from './pages/ProfileEndPage/ProfileEndPage';
 // import ScanPage from '';
@@ -15,35 +15,28 @@ import ProfileEndPage from './pages/ProfileEndPage/ProfileEndPage';
 // import ScanResultPage from '';
 import HomePage from './pages/HomePage/HomePage';
 // import DiaryPage from '';
-import { JwtContext } from './shared/contexts/JwtContext';
+import { JwtContext} from './shared/contexts/JwtContext';
+
 import React, { useState } from 'react';
 
 
 function App() {
   const [jwt, setJwt] = useState(localStorage.getItem('token') || null);
-  // const {t, i18n} = useTranslation(['translation']);
-
-  // const changeLanguaje = (code) => {
-  //   i18n.changeLanguage(code);
-  // }
-  // const [number2, setNumber2] = useState(0)
-  // const [number, setNumber] = useState(2000)
  
-  // let location = useLocation();
-  // console.log(location.pathname);
+  const [newUser,setUser] = useState({});
 
   return (
-    <JwtContext.Provider value={{ jwt, setJwt }}>
-    {/* <MyContext.Provider value={{ activeUser, setActiveUser, discon }}> */}
+    <JwtContext.Provider value={{ jwt, setJwt , newUser, setUser }} >
+      
       <Router>
         <div className="app">
           <Routes>
               {/* el / es el bienvenido y el menú con el slides */}
               <Route path="/" element={<OnboardingPage></OnboardingPage>}/>
               <Route path="/login" element={<LoginPage></LoginPage>}/>
-              {/* <Route path="/register" element={<RegisterPage></RegisterPage>}/>
-              <Route path="/profile" element={<ProfilePage></ProfilePage>}/> */}
-              {/* <Route path="/profile/emergency" element={<ProfileEmergencyPage></ProfileEmergencyPage>}/> */}
+              <Route path="/register" element={<RegisterPage></RegisterPage>}/>
+              <Route path="/profile" element={<ProfilePage></ProfilePage>}/>
+              <Route path="/profile/emergency" element={<ProfileEmergencyPage></ProfileEmergencyPage>}/> 
               <Route path="/profile/alergics" element={<ProfileAlergicPage></ProfileAlergicPage>}/>
               <Route path="/profile/alergics/confirm" element={<ProfileAlergicConfirmPage></ProfileAlergicConfirmPage>}/>
               <Route path="/profile/end" element={<ProfileEndPage></ProfileEndPage>}/>
@@ -57,6 +50,7 @@ function App() {
         </div>
       </Router>
     {/* </MyContext.Provider> */}
+
     </JwtContext.Provider>
   );
 }

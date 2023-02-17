@@ -1,4 +1,4 @@
-.login{
+.register{
     min-height: 100vh;    
     display: flex;
     flex-direction: column;
@@ -6,22 +6,34 @@
     align-items: center;
     
     &__header{
-        width: 100%;
         display: flex;
-        flex-direction: column;  
-    }
+        flex-direction: column;
+        align-items: center;
+        max-height: 121px;
+    }    
 
-    &__img{
-        width: 100%;         
+    &__img1{
+        width: 111px;
+        height: 111px;               
         object-fit: cover;    
     }
 
-    &__imglogo{
+    &__img2{
+        width: 111px;
+        height: 111px;
+        object-fit: cover;   
         position: relative;
-        bottom: 50px;
-        left: 30px;
-        width: 87px;
+        bottom: 111px;
+        left: 0px;
+       
     }
+    &__img3{
+        color:#27c7dc;        
+        position: relative;
+        bottom: 142px;
+        font-size: 15px;            
+    }
+
     &__body{
         width: 90%;        
         display: flex;
@@ -32,7 +44,8 @@
     }
     &__title{
         font-size: 28px;
-        font-weight: 700; 
+        font-weight: 700;
+        margin-bottom: 50px;
     }
     &__subtitle{
         font-size: 19px;     
@@ -43,20 +56,27 @@
         flex-direction: column;
         row-gap: 20px;
         width: 100%;
+        margin-bottom: 30px;
     }
     &__btn{
         width:auto;
         font-size: 22px;
         color: white;
-        background-color: #27c7dc;
+        background-color: #cccccc;
         border: none;
         border-radius: 10px;
         padding-top: 10px;
         padding-bottom: 10px;
-
         // 70faff
-        // 00cadf
-        
+        // 00cadf        
+    }
+    &__btn:hover{
+        background-color: #27c7dc;
+    }
+    &__volver{
+        position: relative;
+        left: -158px;        
+        color: #27c7dc;
     }
     &__blue{
         color: #27c7dc;
