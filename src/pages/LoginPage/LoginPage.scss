@@ -1,0 +1,89 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+    
+    &__heade{
+        width: 100%;
+        display: flex;
+        flex-direction: column;  
+    }
+
+    &__img{
+        width: 100%;         
+        object-fit: cover;
+    
+    }
+    &__imglogo{
+        position: relative;
+        bottom: 50px;
+        left: 30px;
+        width: 87px;
+    }
+    &__body{
+        width: 90%;        
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+        align-items: center;
+
+    }
+    &__title{
+        font-size: 28px;
+        font-weight: 700; 
+    }
+    &__subtitle{
+        font-size: 19px;     
+        font-weight: 600;           
+    }
+    &__form{        
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        width: 100%;
+    }
+    &__btn{
+        width:auto;
+        font-size: 22px;
+        color: white;
+        background-color: #27c7dc;
+        border: none;
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        // 70faff
+        // 00cadf
+        
+    }
+    &__blue{
+        color: #27c7dc;
+    }
+
+    &__email{         
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid grey;
+        font-size: 15px;
+        height: 40px;
+    }
+    &__pwd{
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid grey;
+        font-size: 15px;
+        height: 40px;
+    }
+    &__new-link{
+        color: #27c7dc;
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+input {
+    display: block;
+    width: 100%;
+  }
