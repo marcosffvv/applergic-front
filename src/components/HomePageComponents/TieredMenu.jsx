@@ -1,141 +1,67 @@
 import React, { useRef } from 'react'; 
 import { Button } from 'primereact/button';
 import { TieredMenu } from 'primereact/tieredmenu';
+// import { Link } from "react-router-dom"
+// import menuhamburguesa from "../../assets/HomeAssets/menuhamburguesa.png";
+import "./TiredMenu.scss"
+
+
+
+
 
 export default function PopupDemo() {
     const menu = useRef(null);
     const items = [
+        
         {
-            label: 'File',
-            icon: 'pi pi-fw pi-file',
-            items: [
-                {
-                    label: 'New',
-                    icon: 'pi pi-fw pi-plus',
-                    items: [
-                        {
-                            label: 'Bookmark',
-                            icon: 'pi pi-fw pi-bookmark'
-                        },
-                        {
-                            label: 'Video',
-                            icon: 'pi pi-fw pi-video'
-                        }
-                    ]
-                },
-                {
-                    label: 'Delete',
-                    icon: 'pi pi-fw pi-trash'
-                },
-                {
-                    separator: true
-                },
-                {
-                    label: 'Export',
-                    icon: 'pi pi-fw pi-external-link'
-                }
-            ]
-        },
-        {
-            label: 'Edit',
-            icon: 'pi pi-fw pi-pencil',
-            items: [
-                {
-                    label: 'Left',
-                    icon: 'pi pi-fw pi-align-left'
-                },
-                {
-                    label: 'Right',
-                    icon: 'pi pi-fw pi-align-right'
-                },
-                {
-                    label: 'Center',
-                    icon: 'pi pi-fw pi-align-center'
-                },
-                {
-                    label: 'Justify',
-                    icon: 'pi pi-fw pi-align-justify'
-                }
-            ]
-        },
-        {
-            label: 'Users',
+            label: 'Perfil',
             icon: 'pi pi-fw pi-user',
-            items: [
-                {
-                    label: 'New',
-                    icon: 'pi pi-fw pi-user-plus'
-                },
-                {
-                    label: 'Delete',
-                    icon: 'pi pi-fw pi-user-minus'
-                },
-                {
-                    label: 'Search',
-                    icon: 'pi pi-fw pi-users',
-                    items: [
-                        {
-                            label: 'Filter',
-                            icon: 'pi pi-fw pi-filter',
-                            items: [
-                                {
-                                    label: 'Print',
-                                    icon: 'pi pi-fw pi-print'
-                                }
-                            ]
-                        },
-                        {
-                            icon: 'pi pi-fw pi-bars',
-                            label: 'List'
-                        }
-                    ]
-                }
-            ]
+            url: '/login'
+            
+               
         },
         {
-            label: 'Events',
+            label: 'Favorito',
+            icon: 'pi pi-fw pi-pencil',
+            url: '/login'
+            
+        },
+        {
+            label: 'Diario',
+            icon: 'pi pi-fw pi-user',
+            url: '/login'
+            
+        },
+        {
+            label: 'Compartir',
             icon: 'pi pi-fw pi-calendar',
-            items: [
-                {
-                    label: 'Edit',
-                    icon: 'pi pi-fw pi-pencil',
-                    items: [
-                        {
-                            label: 'Save',
-                            icon: 'pi pi-fw pi-calendar-plus'
-                        },
-                        {
-                            label: 'Delete',
-                            icon: 'pi pi-fw pi-calendar-minus'
-                        }
-                    ]
-                },
-                {
-                    label: 'Archieve',
-                    icon: 'pi pi-fw pi-calendar-times',
-                    items: [
-                        {
-                            label: 'Remove',
-                            icon: 'pi pi-fw pi-calendar-minus'
-                        }
-                    ]
-                }
-            ]
+            url: '/login'
+            
         },
         {
-            separator: true
+            label: 'Traductor',
+            icon: 'pi pi-fw pi-power-off',
+            url: '/login'
         },
         {
-            label: 'Quit',
-            icon: 'pi pi-fw pi-power-off'
+            label: 'Terminos',
+            icon: 'pi pi-fw pi-calendar',
+            url: '/login'
+            
+        },
+        {
+            label: 'Salir',
+            icon: 'pi pi-fw pi-calendar',
+            url: '/login'
         }
+
+       
     ];
 
     return (
         <div className="card flex justify-content-center">
-            <TieredMenu model={items} popup ref={menu} />
-            <button><h2>hola</h2></button>
-            <Button label="EEEEEEEEE" icon="pi pi-bars" onClick={(e) => menu.current.toggle(e)} />
+            <TieredMenu model={items} popup ref={menu}/>
+            <Button className='buttom-menu' icon='pi pi-bars' onClick={(e) => menu.current.toggle(e)} />   
         </div>
     )
 }
