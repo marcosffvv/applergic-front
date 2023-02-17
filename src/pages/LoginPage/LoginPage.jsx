@@ -5,6 +5,7 @@ import { API } from "../../shared/services/api";
 import loginimg from "../../assets/loginimg.png";
 import logoytexto from "../../assets/logoytexto.png";
 import "./LoginPage.scss";
+import { Link } from 'react-router-dom';
 
 export default function LoginPage () {
     const { register, handleSubmit } = useForm();
@@ -53,7 +54,9 @@ export default function LoginPage () {
               ¿nuevo en Applergic?
           </div>
           <div className='login__new-link'>
-              Crea tu cuenta aquí
+              <Link to="/register">
+                  Crea tu cuenta aquí
+              </Link>                
           </div>
 
         </div>
