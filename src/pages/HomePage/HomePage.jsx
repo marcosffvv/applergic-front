@@ -1,19 +1,22 @@
-// import { TieredMenu } from 'primereact/tieredmenu'
+
 import React from 'react'
 import "./HomePage.scss"
-import buttonInfo from "../../assets/buttoninfo.png"
-import menuhamburguesa from "../../assets/menuhamburguesa.png"
-import logohome from "../../assets/logohome.png"
-import scanimg from "../../assets/scanimg.png"
-import searchimg from "../../assets/searchimg.png"
-import sos from "../../assets/sosimg.png"
+import buttonInfo from "../../assets/HomeAssets/buttoninfo.png"
+import logohome from "../../assets/HomeAssets/logohome.png"
+import scanimg from "../../assets/HomeAssets/scanimg.png"
+import searchimg from "../../assets/HomeAssets/searchimg.png"
+import sos from "../../assets/HomeAssets/sosimg.png"
+import StaticMenu from '../../components/HomePageComponents/StaticMenu'
+import PopupDemo from '../../components/HomePageComponents/TieredMenu'
+
 
 const HomePage = () => {
   return (
     <>
       <div className='home'>
         <div className='home-menu'>
-            <img className="home-menu_hamburguesa" img src ={menuhamburguesa} alt="menuhamburguesa" />  
+        <PopupDemo></PopupDemo>
+            {/* <img className="home-menu_hamburguesa" img src ={menuhamburguesa} alt="menuhamburguesa" />   */}
             <img className="home-menu_buttonInfo" img src ={buttonInfo} alt="buttonInfo" />   
         </div>
         <div className='home-logo'>
@@ -48,12 +51,9 @@ const HomePage = () => {
               <p>¿Necesitas ayuda urgente? Contactamos con emergencias.</p>
             </div>
         </div>
-
+        <StaticMenu></StaticMenu>
       </div>
-      {/* <div>
-            
-            <TieredMenu></TieredMenu>
-      </div> */}
+
 
     </>
     
