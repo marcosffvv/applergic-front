@@ -15,12 +15,12 @@ import ProfileEndPage from './pages/ProfileEndPage/ProfileEndPage';
 // import ScanResultPage from '';
 import HomePage from './pages/HomePage/HomePage';
 // import DiaryPage from '';
-
-
+import { JwtContext } from './shared/contexts/JwtContext';
+import React, { useState } from 'react';
 
 
 function App() {
-
+  const [jwt, setJwt] = useState(localStorage.getItem('token') || null);
   // const {t, i18n} = useTranslation(['translation']);
 
   // const changeLanguaje = (code) => {
@@ -33,7 +33,7 @@ function App() {
   // console.log(location.pathname);
 
   return (
-    <>
+    <JwtContext.Provider value={{ jwt, setJwt }}>
     {/* <MyContext.Provider value={{ activeUser, setActiveUser, discon }}> */}
       <Router>
         <div className="app">
@@ -57,7 +57,7 @@ function App() {
         </div>
       </Router>
     {/* </MyContext.Provider> */}
-    </>
+    </JwtContext.Provider>
   );
 }
 
