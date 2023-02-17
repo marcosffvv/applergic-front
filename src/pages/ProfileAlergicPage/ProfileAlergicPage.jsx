@@ -1,87 +1,51 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./ProfileAlergicPage.scss"
 import { Link } from "react-router-dom";
-import volver from "../../assets/volver.png";
-import axios from "axios";
+// import axios from "axios";
+import { API } from "../../shared/services/api";
+import VolverComponent from '../../components/VolverComponent/VolverComponent';
+// import { JwtContext } from '../../shared/contexts/JwtContext';
 
 const ProfileAlergicPage = () => {
-
-  // const componentss = [
-  //   { name: "Aceitunas negras" },
-  //   { name: "Aceitunas verdes" },
-  //   { name: "Acidulante" },
-  //   { name: "Alcaparras" },
-  //   { name: "Anchoas" },
-  //   { name: "Azúcar" },
-  //   { name: "Azúcar glas" },
-  //   { name: "Azúcar moreno" },
-  //   { name: "Caldo de pollo" },
-  //   { name: "Carne de cerdo" },
-  //   { name: "Carne de vacuno" },
-  //   { name: "Cebolla" },
-  //   { name: "Cebolla frita" },
-  //   { name: "Canela" },
-  //   { name: "Chorizo" },
-  //   { name: "Chocolate negro" },
-  //   { name: "Condimentos" },
-  //   { name: "Especias" },
-  //   { name: "Guisantes" },
-  //   { name: "Harina de almendras" },
-  //   { name: "Harina de trigo" },
-  //   { name: "Jamón serrano" },
-  //   { name: "Leche" },
-  //   { name: "Levadura" },
-  //   { name: "Levadura en polvo" },
-  //   { name: "Mantequilla" },
-  //   { name: "Miel" },
-  //   { name: "Pimentón" },
-  //   { name: "Pimiento rojo" },
-  //   { name: "Pimiento verde" },
-  //   { name: "Pollo" },
-  //   { name: "Queso" },
-  //   { name: "Sal" },
-  //   { name: "Sal marina" },
-  //   { name: "Salchicha" },
-  //   { name: "Tomate" },
-  //   { name: "Vainilla" },
-  //   { name: "Vitamina A" },
-  //   { name: "Vitamina B" },
-  //   { name: "Zanahoria" },
-  // ];
-  // const letras = [];
   
-  const letras = {
-    a: 'A',
-    c: 'C',
-    e: 'E',
-    g: 'G',
-    h: 'H',
-    j: 'J',
-    l: 'L',
-    m: 'M',
-    p: 'P',
-    q: 'Q',
-    s: 'S',
-    t: 'T',
-    v: 'V',
-    z: 'Z'
-  }
+  const letras = [
+    {word: 'A'},
+    {word: 'C'},
+    {word: 'E'},
+    {word: 'G'},
+    {word: 'H'},
+    {word: 'J'},
+    {word: 'L'},
+    {word: 'M'},
+    {word: 'O'},
+    {word: 'P'},
+    {word: 'Q'},
+    {word: 'S'},
+    {word: 'T'},
+    {word: 'U'},
+    {word: 'V'},
+    {word: 'Z'}
+  ]
 
   // const [components, setComponentes] = useState([]);
+  // const { setJwt } = useContext(JwtContext);
 
-  // const getComponents = async () => {
+  const getComponents = async () => {
 
-  //   const res = await axios.get("url de la base de datos de mongo")
-  //   setComponentes = (res.data);
-  // }
+    console.log("getting components");
+        API.get('components').then(res => {
+            localStorage.setItem('components', JSON.stringify(res.data))
+            console.log(res.data);
+        })
+  }
 
-  // useEffect(() => {getComponents()}, [])
+  useEffect(() => {getComponents()}, [])
   
   return (
     
     <div className='alergicPage'>
       <div className='alergicPage__header'>
-        <Link><img src={volver} alt='volver'></img></Link>
+        <VolverComponent ruta={'/home'}></VolverComponent>
       </div>
 
       <div className='alergicPage__title'>
@@ -90,7 +54,12 @@ const ProfileAlergicPage = () => {
       </div>
 
       <div className='alergicPage__box'>
-        Acceso rápido.
+        {/* <p>Acceso rápido</p> */}
+        {letras.map((word, i) => (
+          <li key={i}>
+            <button>{word.word}</button>
+          </li>
+        ))}
       </div>
 
       <div className='alergicPage__words'>

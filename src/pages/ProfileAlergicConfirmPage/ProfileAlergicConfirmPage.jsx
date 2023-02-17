@@ -1,13 +1,14 @@
 import React from 'react'
 import "./ProfileAlergicConfirmPage.scss";
 import { Link } from "react-router-dom";
+import CrossComponet from '../../components/CrossComponet/CrossComponent';
 
 const ProfileAlergicConfirmPage = () => {
 
   return (
     <div className='alergicConfirm'>
       <div className='alergicConfirm__out'>
-        <Link to="/home">X</Link>
+        <CrossComponet ruta={'/login'}></CrossComponet>
       </div>
 
       <div className='alergicConfirm__title'>
@@ -18,10 +19,12 @@ const ProfileAlergicConfirmPage = () => {
       <div className='alergicConfirm__alergics'>
         <p className='alergicConfirm__alergics--p1'>Marcar para deseleccionar</p>
         <p className='alergicConfirm__alergics--p2'>o añadir uno nuevo</p>
-        <div className='alergicConfirm__alergics--specific'></div>
+        <div className='alergicConfirm__alergics--specific'>
+          <button><Link to='/profile/alergics' >Añadir nuevos</Link></button>
+        </div>
       </div>
 
-      <button className='alergicPage__btn'><Link to="/profile/end">Confirmar</Link></button>
+      <button className='alergicConfirm__btn'><Link to="/profile/end">CONFIRMAR</Link></button>
     </div>
   )
 }
