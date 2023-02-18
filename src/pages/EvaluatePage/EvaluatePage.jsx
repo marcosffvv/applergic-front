@@ -18,16 +18,16 @@ const EvaluatePage = () => {
           </div> 
          
           <div className="c-evaluate-padre__c-texto-hijo">
-            <h3>¡Gracias por usar applergic!</h3>
-            <h3>Por favor, evalua</h3>
+            <h3 className="c-evaluate-padre__c-texto-hijo__ppal">¡Gracias por usar Applergic!</h3>
+            <h3 className="c-evaluate-padre__c-texto-hijo__texto">Por favor, evalua</h3>
             <h3>tu experiencia.</h3>
           </div>
         
           <div className="c-evaluate-padre__c-stars-hijo">
-            <StarsComponent score={3}></StarsComponent>
+            <StarsComponent score={2}></StarsComponent>
           </div>
 
-          <div className="c-evaluate-padre__c-link-hijo">
+          <div className="c-evaluate-padre__link-hijo">
             <Link to="/home" className="nav-link">Enviar Sugerencias</Link>
           </div>
         

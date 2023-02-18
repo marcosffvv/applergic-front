@@ -41,6 +41,7 @@
     text-align: center;
     &__texto{
     font-size: 20px;
+    margin-top: 3vh;
     }
 }
 .nav-container{
@@ -63,13 +64,10 @@
 .applergicPpal{
     object-fit: cover;
     display: flex;
-   justify-content: center;
-    // margin-top: 15px;
+    justify-content: center;
     &__image{
-        width: 375px;
+        width: 391px;
         height: 529px;
-        // background-color: yellow;
-        object-fit: none;
     }
 }
 .inicioImagen{
