@@ -51,6 +51,7 @@ const HomePage = () => {
               <p>¿Necesitas ayuda urgente? Contactamos con emergencias.</p>
             </div>
         </div>
+        {/* este es el menú estático */}
         <StaticMenu></StaticMenu>
       </div>
 
