@@ -59,13 +59,20 @@
     }
 }
 
-.buttoncomponent{
+.btncomponent{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 100%;
-    bottom: 2vh;
+    bottom: 0vh;
     position: fixed;
     background-color: white;
 }
 
+.tbnprueb{
+    width: 90%;
+}
+
+.app{
+    margin-bottom: 15vh;
+}
