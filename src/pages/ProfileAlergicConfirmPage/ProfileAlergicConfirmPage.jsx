@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./ProfileAlergicConfirmPage.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { API } from "../../shared/services/api";
 import CrossComponet from '../../components/CrossComponet/CrossComponent';
+import { JwtContext } from '../../shared/contexts/JwtContext';
+
 
 const ProfileAlergicConfirmPage = () => {
+
+  const { newUser } = useContext(JwtContext);
+
+  const navigate = useNavigate();
+
+  const guardar = () => {
+    API.post('users/register', newUser).then(res => {
+    console.log('Register user',);
+    navigate('/profile/end')
+    })
+  }
 
   return (
     <div className='alergicConfirm'>
@@ -24,7 +38,7 @@ const ProfileAlergicConfirmPage = () => {
         </div>
       </div>
 
-      <button className='alergicConfirm__btn'><Link to="/profile/end">CONFIRMAR</Link></button>
+      <button onClick={guardar} className='alergicConfirm__btn'>CONFIRMAR</button>
     </div>
   )
 }
