@@ -1,6 +1,7 @@
 .profileEnd{
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   &__header{
     display: flex;
@@ -8,5 +9,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 15px 100px 15px;
+  }
+  &__card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  a{
+    button{
+      
+    }
   }
 }
