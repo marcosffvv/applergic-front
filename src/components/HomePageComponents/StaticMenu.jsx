@@ -7,10 +7,6 @@ import share from "../../assets/HomeAssets/logosharemenu.png"
 import "./StaticMenu.scss"
 
 
-
-
-
-
 export default function StaticMenu() {
     return(
         <div className='thestaticMenu'>
@@ -19,6 +15,7 @@ export default function StaticMenu() {
                 <div><Link to="/evaluate"><img className='staticMenu-img' src ={start} alt="home"/></Link></div>
                 <div><Link to="/diary"><img className='staticMenu-img' src ={diario} alt="home"/></Link></div>
                 <div><Link to="/home"><img className='staticMenu-img' src ={share} alt="home"/></Link></div> 
+            
             </div>
         </div>
             

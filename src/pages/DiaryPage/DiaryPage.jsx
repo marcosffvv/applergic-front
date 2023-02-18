@@ -19,8 +19,6 @@ export default function DiaryPage() {
 
   return(
       <>
-      
-          
          <div className='close'>
           <CrossComponet ruta={'/home'}></CrossComponet>
           <CrossComponet ruta={'/home'}></CrossComponet>
@@ -30,7 +28,6 @@ export default function DiaryPage() {
        <div className='tittle'>
          <p className='tittle-Bold'>¿Incluimos la <br></br> selección en tu <br></br> diario? </p>
          <p className='tittle-info'>Añade tus comentarios para <br></br> completar la información</p>
-         
        </div>
     
 
@@ -49,11 +46,13 @@ export default function DiaryPage() {
             {/* <p>{item.brand}</p> */}  
         </div> 
     ))}
-
-      <div className='buttoncomponent'>
-        <ButtonComponent ruta={'/home'} name={'Guardar'}></ButtonComponent>
-        <ButtonComponent ruta={'/home'} name={'Generar informe'}></ButtonComponent>
-      </div>
+        <div className='tbnprueb'>
+          <div className='btncomponent'>
+          <ButtonComponent ruta={'/home'} name={'Guardar'}></ButtonComponent>
+          <ButtonComponent ruta={'/home'} name={'Generar informe'}></ButtonComponent>
+        </div>
+        </div>
+        
       </>
       
   ) 

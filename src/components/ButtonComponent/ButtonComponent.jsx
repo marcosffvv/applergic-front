@@ -5,7 +5,7 @@ import "./ButtonComponent.scss";
 const ButtonComponent = ({ruta,name}) => {
   return (
     <div className='buttonComponent'>
-      <Link to={ruta}><button>{name}</button></Link>
+      <Link to={ruta}><button className='buttonstyle'>{name}</button></Link>
     </div>
   )
 }
