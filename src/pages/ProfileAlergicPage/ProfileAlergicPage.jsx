@@ -1,14 +1,16 @@
+
 import React, { useContext, useEffect, useState } from 'react'
 import "./ProfileAlergicPage.scss"
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 // import axios from "axios";
-// import { API } from "../../shared/services/api";
 import VolverComponent from '../../components/VolverComponent/VolverComponent';
 import axios from 'axios';
-// import { JwtContext } from '../../shared/contexts/JwtContext';
+import { JwtContext } from '../../shared/contexts/JwtContext';
 
-const ProfileAlergicPage = () => {
-  
+const ProfileAlergicPage = () => {  
+
+  const { setUser, newUser } = useContext(JwtContext);
+
   const letras = [
     {word: 'A'},
     {word: 'C'},
@@ -29,7 +31,23 @@ const ProfileAlergicPage = () => {
   ]
   // const { setJwt } = useContext(JwtContext);
 
+  const [miClase, setMiClase] = useState('notSelected');
+
+  const navigate = useNavigate();
+
+
+  const guardar = () => {
+    let completUser = {...newUser, intolerances: alergiasUser};
+    setUser(completUser);
+    navigate('/profile/alergics/confirm');
+  }
+
+
+
   const [components, setComponentes] = useState([]);
+
+  const claseSelected = 'selected';
+  const claseNotSelected = 'notSelected';
 
   const getComponents = async () => {
     const res = await axios.get("http://localhost:5001/components");
@@ -47,6 +65,23 @@ const ProfileAlergicPage = () => {
   // }
   // useEffect(() => {getComponentsWord()}, [])
   
+  let alergiasUser = [];
+  let noAlergico = [];
+
+  const addIntolerance = (myId) => {
+    const foundItem = alergiasUser.find((item) => item === myId);
+      if (foundItem) {
+        console.log('El elemento encontrado es:', foundItem);
+        alergiasUser = alergiasUser.filter((item) => item !== myId);
+        console.log(alergiasUser);
+      } else {
+        console.log('El elemento no se encontró en el array');
+        alergiasUser = [...alergiasUser, myId];
+        setMiClase('selected');
+        console.log(alergiasUser);
+      }
+  }
+
   return (
     
     <div className='alergicPage'>
@@ -71,15 +106,16 @@ const ProfileAlergicPage = () => {
       
 
       <div className='alergicPage__words'>
-      {components.map((item,index) => (
+      {components.map((item, index) => (
         <div key={index}>
-            <button>{item.name}</button>
+            <button className={miClase} onClick={() => addIntolerance(item._id)} id={item._id}>{item.name}</button>
         </div>
       ))}
       </div>
 
-      <button className='alergicPage__btn'><Link to="/profile/alergics/confirm" >Guardar</Link></button>
+      <button onClick={guardar} className='alergicPage__btn'>Guardar</button>
 
+      
     </div>
   )
 }
