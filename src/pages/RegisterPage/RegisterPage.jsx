@@ -5,6 +5,7 @@ import circuloImg from "../../assets/circulo-camara-fotos.png";
 import "./RegisterPage.scss";
 import { Link, useNavigate } from 'react-router-dom';
 import { JwtContext } from '../../shared/contexts/JwtContext';
+import VolverComponent from '../../components/VolverComponent/VolverComponent';
 
 
 export default function RegisterPage () {
@@ -24,10 +25,13 @@ export default function RegisterPage () {
     return (
       <div className="register">
           <div className='register__volver'>
-              <Link to="/login">
+            <VolverComponent ruta={'/login'}></VolverComponent>
+              {/* <Link to="/login">
                   &lt; Volver  
-              </Link> 
+              </Link>  */}
           </div>
+
+
 
           <div className='register__title'>
               Dinos quien eres.

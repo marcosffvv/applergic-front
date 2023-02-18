@@ -43,6 +43,7 @@
 
     }
     &__title{
+        margin-top: 30px;
         font-size: 28px;
         font-weight: 700;
         margin-bottom: 50px;
@@ -75,7 +76,8 @@
     }
     &__volver{
         position: relative;
-        left: -158px;        
+        left: -158px;      
+        top:30px;
         color: #27c7dc;
     }
     &__blue{
