@@ -22,8 +22,7 @@ export default function ProfileEmergencyPage () {
         console.log(newUser);
         // registramos el usuario. está comentado porque esto se hace en la siguiente pantalla
         //   API.post('users/register', completUser).then(res => {
-        //     console.log('Register user',);
-        //
+        //     console.log('Register user',);        
         // })
         navigate('/profile/alergics');     
     }
