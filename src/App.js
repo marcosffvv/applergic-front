@@ -10,11 +10,11 @@ import ProfileAlergicPage from './pages/ProfileAlergicPage/ProfileAlergicPage';
 import ProfileEmergencyPage from './pages/ProfileEmergencyPage/ProfileEmergencyPage';
 import ProfileAlergicConfirmPage from './pages/ProfileAlergicConfirmPage/ProfileAlergicConfirmPage';
 import ProfileEndPage from './pages/ProfileEndPage/ProfileEndPage';
-// import ScanPage from '';
-// import EvaluatePage from '';
-// import ScanResultPage from '';
+import ScanPage from './pages/ScanPage/ScanPage';
+import EvaluatePage from './pages/EvaluatePage/EvaluatePage';
+import ScanResultPage from './pages/ScanResultPage/ScanResultPage';
 import HomePage from './pages/HomePage/HomePage';
-// import DiaryPage from '';
+import DiaryPage from './pages/DiaryPage/DiaryPage';
 import { JwtContext} from './shared/contexts/JwtContext';
 
 import React, { useState } from 'react';
@@ -30,8 +30,7 @@ function App() {
       
       <Router>
         <div className="app">
-          <Routes>
-              {/* el / es el bienvenido y el menú con el slides */}
+          <Routes>             
               <Route path="/" element={<OnboardingPage></OnboardingPage>}/>
               <Route path="/login" element={<LoginPage></LoginPage>}/>
               <Route path="/register" element={<RegisterPage></RegisterPage>}/>
@@ -40,11 +39,11 @@ function App() {
               <Route path="/profile/alergics" element={<ProfileAlergicPage></ProfileAlergicPage>}/>
               <Route path="/profile/alergics/confirm" element={<ProfileAlergicConfirmPage></ProfileAlergicConfirmPage>}/>
               <Route path="/profile/end" element={<ProfileEndPage></ProfileEndPage>}/>
-              {/* <Route path="/scan" element={<ScanPage></ScanPage>}/>
+              <Route path="/scan" element={<ScanPage></ScanPage>}/>
               <Route path="/evaluate" element={<EvaluatePage></EvaluatePage>}/>
-              <Route path="/scan/result" element={<ScanResultPage></ScanResultPage>}/> */}
+              <Route path="/scan/result" element={<ScanResultPage></ScanResultPage>}/>
               <Route path="/home" element={<HomePage></HomePage>}/>
-              {/* <Route path="/diary" element={<DiaryPage></DiaryPage>}/> */}
+              <Route path="/diary" element={<DiaryPage></DiaryPage>}/>
 
           </Routes>
         </div>

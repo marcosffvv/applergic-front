@@ -5,11 +5,12 @@ import { API } from "../../shared/services/api";
 import loginimg from "../../assets/loginimg.png";
 import logoytexto from "../../assets/logoytexto.png";
 import "./LoginPage.scss";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function LoginPage () {
     const { register, handleSubmit } = useForm();
     const { setJwt } = useContext(JwtContext);
+    const navigate = useNavigate();
 
     const onSubmit = formData => {
         console.log("submit");
@@ -17,6 +18,7 @@ export default function LoginPage () {
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('user', JSON.stringify(res.data.user))
             setJwt(true);
+            navigate('/home');
         })
     }
 
@@ -54,7 +56,7 @@ export default function LoginPage () {
               ¿nuevo en Applergic?
           </div>
           <div className='login__new-link'>
-              <Link to="/register">
+              <Link className='login__new-link' to="/register">
                   Crea tu cuenta aquí
               </Link>                
           </div>
