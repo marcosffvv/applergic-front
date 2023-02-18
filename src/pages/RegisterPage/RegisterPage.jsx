@@ -13,17 +13,26 @@ import { BtnGrey } from '../../components/BtnComponent/BtnComponent';
 export default function RegisterPage () {
     const [photo,setPhoto] = useState('ko');
     const { register, handleSubmit } = useForm();        
-    const { setUser } = useContext(JwtContext);
+    const { setUser,newUser } = useContext(JwtContext);
     const navigate = useNavigate();
+    
+    let defName = newUser.name;
+    let defEmail = newUser.email;
+    let defPhone = newUser.phone;
+    let defPassword = newUser.password;
 
+    
     const onSubmit = formData => {
-        console.log("empezamos a crear nuevo usuario");
-        console.log(formData);     
-        setUser(formData);
-        navigate('/profile/emergency');
+      console.log("empezamos a crear nuevo usuario");
+      console.log(formData);     
+      setUser(formData);
+      navigate('/profile/emergency');
     }
     
-    const activatePhoto=()=>{      
+    // cargar datos en el formulario
+    
+    const activatePhoto=()=>{        
+
       if(photo==='ok'){
         setPhoto('ko');
       }else{
@@ -57,19 +66,19 @@ export default function RegisterPage () {
 
           <form className='register__form' onSubmit={handleSubmit(onSubmit)}>                        
 
-              <input className='register__email' id="name" 
+              <input className='register__txt' id="name" defaultValue={defName}
                       placeholder='Nombre completo'                       
                       {...register("name",{required: true})}/>
 
-              <input className='register__email' id="email" 
+              <input className='register__txt' id="email" defaultValue={defEmail}
                       placeholder='Dirección e.mail'                       
                       {...register("email",{required: true})}/>
 
-              <input className='register__email' id="phone" 
+              <input className='register__txt' id="phone" defaultValue={defPhone}
                       placeholder='Móvil'                       
                       {...register("phone",{required: true})}/>
           
-              <input className='register__pwd' id="password"  
+              <input className='register__txt' id="password"  defaultValue={defPassword}
                     placeholder='Password' 
                     type="password"                     
                     {...register("password",{required: true})}/>

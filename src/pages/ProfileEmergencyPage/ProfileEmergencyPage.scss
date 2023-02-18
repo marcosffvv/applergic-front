@@ -24,12 +24,11 @@
         max-width: 220px;
     }
     &__subtitle{
+        font-family: Monserrat-Estandart;
         color:#a8a8a8;
         font-size: 15px;     
-        // font-weight: 600;  
         max-width: 300px;   
-        text-align: justify;
-        font-family: Monserrat-Estandart;        
+        text-align: justify;      
     }
 
     &__body{
@@ -55,9 +54,7 @@
         border: none;
         border-radius: 10px;
         padding-top: 10px;
-        padding-bottom: 10px;
-        // 70faff
-        // 00cadf        
+        padding-bottom: 10px;   
     }
     &__btn:hover{
         background-color: #27c7dc;
@@ -79,13 +76,12 @@
         border-bottom: 1px solid rgb(116, 116, 116);
         font-size: 15px;
         height: 40px;
-        font-family: Monserrat-Estandart; 
+        font-family: "Monserrat-Estandart"; 
     }
     
     &__txt::placeholder{       
         color:#d4d2d2;          
     }
-
    
     &__new-link{
         color: #27c7dc;
@@ -93,7 +89,3 @@
         font-weight: 600;
     }
 }
-input {
-    display: block;
-    width: 100%;
-  }

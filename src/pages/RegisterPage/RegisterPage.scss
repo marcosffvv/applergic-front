@@ -2,7 +2,6 @@
     min-height: 100vh;    
     display: flex;
     flex-direction: column;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     align-items: center;
     
     &__header{
@@ -42,9 +41,10 @@
 
     }
     &__title{
-        margin-top: 30px;
-        font-size: 28px;
-        font-weight: 700;
+        font-family: Monserrat-Bold;
+        font-size: 20px;                
+
+        margin-top: 30px;    
         margin-bottom: 50px;
     }
     &__subtitle{
@@ -85,13 +85,18 @@
         color: #27c7dc;
     }
 
-    &__email{         
+    &__txt{         
+        color:#595f65;    
         border-top: none;
         border-left: none;
         border-right: none;
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid rgb(116, 116, 116);
         font-size: 15px;
         height: 40px;
+        font-family: "Monserrat-Estandart"; 
+    }
+    &__txt::placeholder{       
+        color:#d4d2d2;          
     }
     &__pwd{
         border-top: none;
@@ -107,7 +112,3 @@
         font-weight: 600;
     }
 }
-input {
-    display: block;
-    width: 100%;
-  }

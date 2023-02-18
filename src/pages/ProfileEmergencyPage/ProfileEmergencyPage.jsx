@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { JwtContext } from '../../shared/contexts/JwtContext';
 import VolverComponent from '../../components/VolverComponent/VolverComponent';
 import { BtnGrey } from '../../components/BtnComponent/BtnComponent';
+import { API } from "../../shared/services/api";
 
 export default function ProfileEmergencyPage () {
     const { register, handleSubmit } = useForm();    
@@ -13,16 +14,17 @@ export default function ProfileEmergencyPage () {
     console.log(newUser);
     const navigate = useNavigate();
 
-    const onSubmit = formData => {
-        // console.log("añadimos los datos de emergencia");
-        // console.log(formData);
-        let completUser = {...newUser,...formData};
-        // console.log(completUser);
-
+    const onSubmit = formData => {        
+        let completUser = {...newUser,...formData,"photourl":"https://avatars.githubusercontent.com/u/117455326?s=400&u=aa6acaed286d86bc4fbfb37a2b1a0095f480f4d1&v=4"};
+        // let completUser = {...newUser,alergiasUser};
         setUser(completUser);
         console.log("datos completos del usuario");        
         console.log(newUser);
-        navigate('/profile/alergics');        
+        // registramos el usuario. está comentado porque esto se hace en la siguiente pantalla
+        //   API.post('users/register', completUser).then(res => {
+        //     console.log('Register user',);        
+        // })
+        navigate('/profile/alergics');     
     }
 
     return (

@@ -10,7 +10,7 @@ import { BtnBlue } from '../../components/BtnComponent/BtnComponent';
 
 export default function LoginPage () {
     const { register, handleSubmit } = useForm();
-    const { setJwt } = useContext(JwtContext);
+    const { setJwt,setUser } = useContext(JwtContext);
     const navigate = useNavigate();
 
     const onSubmit = formData => {
@@ -19,6 +19,7 @@ export default function LoginPage () {
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('user', JSON.stringify(res.data.user))
             setJwt(true);
+            setUser(JSON.stringify(res.data.user));
             navigate('/home');
         })
     }
