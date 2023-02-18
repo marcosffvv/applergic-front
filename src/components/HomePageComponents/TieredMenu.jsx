@@ -16,7 +16,7 @@ export default function PopupDemo() {
         {
             label: 'Perfil',
             icon: 'pi pi-fw pi-user',
-            url: '/login'
+            url: '/profile'
             
                
         },
@@ -29,7 +29,7 @@ export default function PopupDemo() {
         {
             label: 'Diario',
             icon: 'pi pi-fw pi-user',
-            url: '/login'
+            url: '/diary'
             
         },
         {
