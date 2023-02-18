@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./ProfileAlergicPage.scss"
 import { Link } from "react-router-dom";
 // import axios from "axios";
-import { API } from "../../shared/services/api";
+// import { API } from "../../shared/services/api";
 import VolverComponent from '../../components/VolverComponent/VolverComponent';
+import axios from 'axios';
 // import { JwtContext } from '../../shared/contexts/JwtContext';
 
 const ProfileAlergicPage = () => {
@@ -26,20 +27,25 @@ const ProfileAlergicPage = () => {
     {word: 'V'},
     {word: 'Z'}
   ]
-
-  // const [components, setComponentes] = useState([]);
   // const { setJwt } = useContext(JwtContext);
 
+  const [components, setComponentes] = useState([]);
+
   const getComponents = async () => {
-
-    console.log("getting components");
-        API.get('components').then(res => {
-            localStorage.setItem('components', JSON.stringify(res.data))
-            console.log(res.data);
-        })
+    const res = await axios.get("http://localhost:5001/components");
+    console.log("consoling components");
+    setComponentes(res.data)
   }
+  useEffect(() => {getComponents()}, []);
 
-  useEffect(() => {getComponents()}, [])
+  // const getComponentsWord = async () => {
+  //   console.log("getting components");
+  //       API.get('components').then(res => {
+  //         localStorage.setItem('components', JSON.stringify(res.data))
+  //         console.log(res.data);
+  //       })
+  // }
+  // useEffect(() => {getComponentsWord()}, [])
   
   return (
     
@@ -62,11 +68,18 @@ const ProfileAlergicPage = () => {
         ))}
       </div>
 
+      
+
       <div className='alergicPage__words'>
-        AQUI VAN LAS LETRAS DEL ARRAY
+      {components.map((item,index) => (
+        <div key={index}>
+            <button>{item.name}</button>
+        </div>
+      ))}
       </div>
 
       <button className='alergicPage__btn'><Link to="/profile/alergics/confirm" >Guardar</Link></button>
+
     </div>
   )
 }

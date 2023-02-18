@@ -60,6 +60,19 @@
   &__words{
     padding-top: 20px;
     padding-bottom: 20px;
+
+    button{
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      width: 120px;
+      padding: 15px;
+      border-radius: 30px;
+      display: flex;
+      border: 1px solid grey;
+      background-color: white;
+      color: grey;
+    }
   }
   &__btn{
     margin-left: 25px;
