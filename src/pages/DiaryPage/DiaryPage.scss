@@ -1,0 +1,71 @@
+.close{
+    display: flex;
+    justify-content: flex-end;
+    margin: 4vh 3vh 2vh 0vh;
+
+    a{
+        margin: 2vh;
+    }
+}
+
+.tittle{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    &-Bold{
+        font-family: "Monserrat-Bold";
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 2vh;
+    }
+
+    &-Bold2{
+        font-family: "Monserrat-Bold";
+        text-align: center;
+        font-size: 23px;
+        margin-bottom: 2vh;
+    }
+
+    &-info{
+       margin-bottom: 2vh; 
+       text-align: center;
+       margin-bottom: 4vh;
+    }
+}
+
+.products{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid #83d8ad;
+    padding: 3vh;
+
+    &-container{
+        display: flex;
+
+        &_dates{
+            padding: 3vh;
+        }
+
+        &_cross{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &-img{
+        max-width: 6vh;  
+    }
+}
+
+.buttoncomponent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    bottom: 2vh;
+    position: fixed;
+    background-color: white;
+}
+

@@ -16,7 +16,7 @@ export default function StaticMenu() {
         <div className='thestaticMenu'>
             <div className='staticMenu'>
                 <div><Link to="/home"><img className='staticMenu-img' src ={home} alt="home"/></Link></div>
-                <div><Link to="/home"><img className='staticMenu-img' src ={start} alt="home"/></Link></div>
+                <div><Link to="/evaluate"><img className='staticMenu-img' src ={start} alt="home"/></Link></div>
                 <div><Link to="/diary"><img className='staticMenu-img' src ={diario} alt="home"/></Link></div>
                 <div><Link to="/home"><img className='staticMenu-img' src ={share} alt="home"/></Link></div> 
             </div>
