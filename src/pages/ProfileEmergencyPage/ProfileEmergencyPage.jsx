@@ -1,71 +1,74 @@
 import React, { useContext } from 'react'
 import { useForm } from "react-hook-form";
-import camaraImg from "../../assets/camara-fotos.png";
-import circuloImg from "../../assets/circulo-camara-fotos.png";
 import "./ProfileEmergencyPage.scss";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { JwtContext } from '../../shared/contexts/JwtContext';
-
+import VolverComponent from '../../components/VolverComponent/VolverComponent';
+import { BtnGrey } from '../../components/BtnComponent/BtnComponent';
 
 export default function ProfileEmergencyPage () {
     const { register, handleSubmit } = useForm();    
-    const { setUser } = useContext(JwtContext);
+    const { setUser, newUser } = useContext(JwtContext);
+    console.log("recogemos los datos del usuario");
+    console.log(newUser);
     const navigate = useNavigate();
 
     const onSubmit = formData => {
-        console.log("empezamos a crear nuevo usuario");
-        console.log(formData);     
-        setUser(formData);
-        navigate('/profile/emergency');
-        // setUser({...newUser,...formData2});
-        
+        // console.log("añadimos los datos de emergencia");
+        // console.log(formData);
+        let completUser = {...newUser,...formData};
+        // console.log(completUser);
+
+        setUser(completUser);
+        console.log("datos completos del usuario");        
+        console.log(newUser);
+        navigate('/profile/alergics');        
     }
 
     return (
-      <div className="register">
-          <div className='register__volver'>
-              <Link to="/login">
-                  &lt; Volver  
-              </Link> 
-          </div>
-
-          <div className='register__title'>
-              Dinos quien eres.
-          </div>
-        <div className='register__header'>
-          <img className='register__img1'  src={circuloImg} alt="img" />
-          <img className='register__img2'  src={camaraImg} alt="img"/>
-          <p  className='register__img3'>Subir foto</p>
-        </div>
-        <div className='register__body'>
-          <div className='register__subtitle'>
-              Por favor, introduce tus datos para continuar.
-          </div>
-
-          <form className='register__form' onSubmit={handleSubmit(onSubmit)}>                        
-
-              <input className='register__email' id="name" 
-                      placeholder='Nombre completo'                       
-                      {...register("name",{required: true})}/>
-
-              <input className='register__email' id="email" 
-                      placeholder='Dirección e.mail'                       
-                      {...register("email",{required: true})}/>
-
-              <input className='register__email' id="phone" 
-                      placeholder='Móvil'                       
-                      {...register("phone",{required: true})}/>
+      <div className="profileEmergency">
           
-              <input className='register__pwd' id="password"  
-                    placeholder='Password' 
-                    type="password"                     
-                    {...register("password",{required: true})}/>
+        <div className='profileEmergency__header'>
+          <div className='profileEmergency__volver'>
+              <VolverComponent ruta={'/register'}></VolverComponent>
+          </div>
+          <div className='profileEmergency__title'>
+            Vamos a añadir tu contacto en caso de emergencia.
+          </div>
+          <div className='profileEmergency__subtitle'>
+            Nos pondremos en contacto con tu persona de confianza y/o compañía de seguros en caso de emergencia.  
+          </div>
+        </div>
+
+        <div className='profileEmergency__body'>        
+
+          <form className='profileEmergency__form' onSubmit={handleSubmit(onSubmit)}>                        
+
+              <input className='profileEmergency__txt' id="contactName" 
+                      placeholder='Nombre completo de tu contacto'                       
+                      {...register("contactName",{required: true})}/>
+
+              <input className='profileEmergency__txt' id="contactEmail" 
+                      placeholder='Dirección e.mail'                       
+                      {...register("contactEmail",{required: true})}/>
+
+              <input className='profileEmergency__txt' id="contactPhone" 
+                      placeholder='Móvil'                       
+                      {...register("contactPhone",{required: true})}/>
+          
+          <input className='profileEmergency__txt' id="insuranceCompany" 
+                      placeholder='Compañía de seguros/Nº Póliza'                       
+                      {...register("insuranceCompany",{required: true})}/>
               
-              <input className='register__btn'  type="submit" value="Guardar perfil"/>
+              <BtnGrey showText='Guardar emergencias'></BtnGrey>
+              {/* <input className='profileEmergency__btn'  type="submit" value="Guardar emergencias"/> */}
           </form>      
-   
+          <div className='profileEmergency__blue'>
+             Me registraré en otro momento
+          </div>   
 
         </div>
+
 
 
 

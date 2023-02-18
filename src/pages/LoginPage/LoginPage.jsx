@@ -6,6 +6,7 @@ import loginimg from "../../assets/loginimg.png";
 import logoytexto from "../../assets/logoytexto.png";
 import "./LoginPage.scss";
 import { Link, useNavigate } from 'react-router-dom';
+import { BtnBlue } from '../../components/BtnComponent/BtnComponent';
 
 export default function LoginPage () {
     const { register, handleSubmit } = useForm();
@@ -37,12 +38,12 @@ export default function LoginPage () {
           </div>
 
           <form className='login__form' onSubmit={handleSubmit(onSubmit)}>                        
-              <input className='login__email' id="email" 
+              <input className='login__txt' id="email" 
                       placeholder='Dirección e.mail' 
                       // defaultValue="pedro@pedro.com"
                       {...register("email",{required: true})}/>
           
-              <input className='login__pwd' id="password"  
+              <input className='login__txt' id="password"  
                     placeholder='Password' 
                     type="password" 
                     // defaultValue={'Pedro*1'}
@@ -50,8 +51,13 @@ export default function LoginPage () {
               <div className='login__blue'>
                 ¿Olvidaste la contaseña
               </div>
-              <input className='login__btn'  type="submit" value="Entrar"/>
+              <BtnBlue showText='Entrar'></BtnBlue>
+              {/* <input className='login__btn'  type="submit" value="Entrar"/> */}
           </form>
+
+
+        </div>
+
           <div className='login__new'>
               ¿nuevo en Applergic?
           </div>
@@ -60,9 +66,9 @@ export default function LoginPage () {
                   Crea tu cuenta aquí
               </Link>                
           </div>
-
-        </div>
-
+          <div className='login__blue'>
+             Me registraré en otro momento
+          </div>
 
 
       </div>
