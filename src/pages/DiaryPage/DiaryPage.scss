@@ -1,10 +1,15 @@
-.close{
+.editDiary{
     display: flex;
     justify-content: flex-end;
     margin: 4vh 3vh 2vh 0vh;
+    align-items: center;
 
     a{
         margin: 2vh;
+    }
+
+    &-png{
+        width: 3vh;
     }
 }
 
@@ -36,13 +41,13 @@
 
 .products{
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
     border: 1px solid #83d8ad;
-    padding: 3vh;
+    padding: 2vh;
+    justify-content: space-evenly;
 
     &-container{
         display: flex;
+        align-items: center;
 
         &_dates{
             padding: 3vh;
@@ -51,11 +56,13 @@
         &_cross{
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
         }
     }
 
     &-img{
-        max-width: 6vh;  
+        max-height: 8vh;  
     }
 }
 
@@ -64,15 +71,10 @@
     flex-direction: column;
     justify-content: space-around;
     width: 100%;
-    bottom: 0vh;
-    position: fixed;
     background-color: white;
 }
 
-.tbnprueb{
-    width: 90%;
-}
-
-.app{
-    margin-bottom: 15vh;
+.btndiv{
+    width: 100%;
+    margin-top: 3vh;
 }

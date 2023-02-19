@@ -22,15 +22,15 @@ export default function ScanPage(){
       {/* <ScanCodePage></ScanCodePage> */}
 
       <div className='linksScan'>
-      <Link to = {'/home'}><button class="buttonScan">
+      <Link to = {'/home'}><button className="buttonScan">
             <div><img className='imgScan' src ={cbarras} alt="buttonScan"/></div>
       </button></Link>
 
-      <Link to = {'/home'}><button class="buttonQr">
+      <Link to = {'/home'}><button className="buttonQr">
             <div><img className='imgScan' src ={qr} alt="buttonScan"/></div>
       </button></Link>
 
-      <Link to = {'/home'}><button class="buttonNfc">
+      <Link to = {'/home'}><button className="buttonNfc">
             <div><img className='imgScan' src ={nfc} alt="buttonScan"/></div>
       </button></Link>
       </div>
