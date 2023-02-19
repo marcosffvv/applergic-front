@@ -14,6 +14,24 @@ export default function ProfileEmergencyPage () {
     console.log(newUser);
     const navigate = useNavigate();
 
+    // recargamos formulario con datos por defecto.
+    // si ya estamos logeados entonces cargamos con los datos del usuario loogeado
+    let defContactName = newUser.contactName;
+    let defContactEmail = newUser.contactEmail;
+    let defContactPhone = newUser.contactPhone;
+    let defInsuranceCompany = newUser.insuranceCompany;
+
+    // recogemos valor de la variable de localstorage
+    const myObjectString = localStorage.getItem('user');
+    if(myObjectString){
+         let userLoged = JSON.parse(myObjectString)
+         defContactName = userLoged.contactName;
+         defContactEmail = userLoged.contactEmail;
+         defContactPhone = userLoged.contactPhone;
+         defInsuranceCompany = userLoged.insuranceCompany;
+    }
+
+
     const onSubmit = formData => {        
         let completUser = {...newUser,...formData,"photourl":"https://avatars.githubusercontent.com/u/117455326?s=400&u=aa6acaed286d86bc4fbfb37a2b1a0095f480f4d1&v=4"};
         // let completUser = {...newUser,alergiasUser};
@@ -47,19 +65,19 @@ export default function ProfileEmergencyPage () {
           <form className='profileEmergency__form' onSubmit={handleSubmit(onSubmit)}>                        
 
               <input className='profileEmergency__txt' id="contactName" 
-                      placeholder='Nombre completo de tu contacto'                       
+                      placeholder='Nombre completo de tu contacto' defaultValue={defContactName}                      
                       {...register("contactName",{required: true})}/>
 
               <input className='profileEmergency__txt' id="contactEmail" 
-                      placeholder='Dirección e.mail'                       
+                      placeholder='Dirección e.mail'     defaultValue={defContactEmail}                  
                       {...register("contactEmail",{required: true})}/>
 
               <input className='profileEmergency__txt' id="contactPhone" 
-                      placeholder='Móvil'                       
+                      placeholder='Móvil'                defaultValue={defContactPhone}       
                       {...register("contactPhone",{required: true})}/>
           
           <input className='profileEmergency__txt' id="insuranceCompany" 
-                      placeholder='Compañía de seguros/Nº Póliza'                       
+                      placeholder='Compañía de seguros/Nº Póliza'   defaultValue={defInsuranceCompany}                    
                       {...register("insuranceCompany",{required: true})}/>
               
               <BtnGrey showText='Guardar emergencias'></BtnGrey>
