@@ -17,16 +17,15 @@ const HomePage = () => {
       <div className='home'>
         <div className='home-menu'>
         <PopupDemo></PopupDemo>
-            {/* <img className="home-menu_hamburguesa" img src ={menuhamburguesa} alt="menuhamburguesa" />   */}
-            <Link to = {'/profile'}><img className="home-menu_buttonInfo" img src ={buttonInfo} alt="buttonInfo"/></Link>   
+            <Link to = {'/home/profile'}><img className="home-menu_buttonInfo" src={buttonInfo} alt="buttonInfo"/></Link>   
         </div>
         <div className='home-logo'>
-            <img className="home-menu_logohome" img src ={logohome} alt="logohome" />   
+            <img className="home-menu_logohome" src={logohome} alt="logohome" />   
         </div>
         <div className='home-buttons'>
             <div className='home-buttons_scan'>
             {/* Botón de escanear */}
-            <Link to = {'/scan'}><button class="button-class1">
+            <Link to = {'/scan'}><button className="button-class1">
                 <div><img src ={scanimg} alt="buttonScan"/></div>
                 <div><p>Escanear</p></div>
                 <div><p className='ocult'>Escanear</p></div>
@@ -35,7 +34,7 @@ const HomePage = () => {
             </div>
             <div className='home-buttons_scan'>
             {/* Botón de Buscar producto */}
-             <Link to = {'/home'}><button class="button-class2">
+             <Link to = {'/home'}><button className="button-class2">
                 <div><img src ={searchimg} alt="buttonSearch"/></div>
                 <div><p>Buscar</p></div>
                 <div><p className='ocult'>Buscar</p></div>
@@ -44,7 +43,7 @@ const HomePage = () => {
             </div>
             <div className='home-buttons_scan'>
             {/* Botón de pedir ayuda */}
-            <Link to = {'/profile/emergency'}><button class="button-class3">
+            <Link to = {'/profile/emergency'}><button className="button-class3">
                 <div><img src ={sos} alt="buttonSearch"/></div>
                 <div><p>S.O.S</p></div>
                 <div><p className='ocult'>S.O.S</p></div>

@@ -1,8 +1,7 @@
 import "./DiaryPage.scss"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import { useEffect, useState} from "react"
-// import { useContext } from "react"
+import { useEffect, useState, useContext } from "react"
 import calendar from "../../assets/calendario.png"
 import filter from "../../assets/filter.png"
 import edit from "../../assets/edit.png"
@@ -38,7 +37,7 @@ export default function DiaryPage() {
 
   //   postProducts();
   // }, [newUser]);
-
+  
 
   return(
       <>
