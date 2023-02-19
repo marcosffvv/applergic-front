@@ -1,7 +1,6 @@
-
-import React, { useContext, useEffect, useState } from 'react'
-import "./ProfileAlergicPage.scss"
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from 'react';
+import "./ProfileAlergicPage.scss";
+import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 import VolverComponent from '../../components/VolverComponent/VolverComponent';
 import axios from 'axios';
@@ -11,7 +10,7 @@ const ProfileAlergicPage = () => {
 
   const { setUser, newUser } = useContext(JwtContext);
 
-  const [miClase, setMiClase] = useState('notSelected');
+  // const [miClase, setMiClase] = useState('notSelected');
 
   const navigate = useNavigate();
 
@@ -21,12 +20,10 @@ const ProfileAlergicPage = () => {
     navigate('/profile/alergics/confirm');
   }
 
-
-
   const [components, setComponentes] = useState([]);
 
-  const claseSelected = 'selected';
-  const claseNotSelected = 'notSelected';
+  // const claseSelected = 'selected';
+  // const claseNotSelected = 'notSelected';
 
   const getComponents = async () => {
     const res = await axios.get("http://localhost:5001/components");
@@ -45,18 +42,18 @@ const ProfileAlergicPage = () => {
   // useEffect(() => {getComponentsWord()}, [])
   
   let alergiasUser = [];
-  let noAlergico = [];
+  // let noAlergico = [];
 
   const addIntolerance = (myId) => {
     const foundItem = alergiasUser.find((item) => item === myId);
       if (foundItem) {
-        console.log('El elemento encontrado es:', foundItem);
+        console.log('Elemento eliminado de alergias');
         alergiasUser = alergiasUser.filter((item) => item !== myId);
         console.log(alergiasUser);
       } else {
-        console.log('El elemento no se encontró en el array');
+        console.log('Elemento añadido a alergias');
         alergiasUser = [...alergiasUser, myId];
-        setMiClase('selected');
+        // setMiClase('selected');
         console.log(alergiasUser);
       }
   }
@@ -65,7 +62,7 @@ const ProfileAlergicPage = () => {
     
     <div className='alergicPage'>
       <div className='alergicPage__header'>
-        <VolverComponent ruta={'/home'}></VolverComponent>
+        <VolverComponent ruta={'/profile/emergency'}></VolverComponent>
       </div>
 
       <div className='alergicPage__title'>
@@ -88,7 +85,7 @@ const ProfileAlergicPage = () => {
             <button className='alergicPage__words__box--letter'>{item.letter}</button>
             <div className='alergicPage__words__box--c'>
               {item.components.map((component, i) => (                
-                  <button key={i} className='alergicPage__words__box--c--1' onClick={() => addIntolerance(item._id)} id={item._id}>{component.name}</button>
+                  <button key={i} className='alergicPage__words__box--c--1' onClick={() => addIntolerance(component.id)} id={component.id}>{component.name}</button>
               ))}
               </div>
           </div>
