@@ -34,7 +34,8 @@ const ProfileAlergicConfirmPage = () => {
         <p className='alergicConfirm__alergics--p1'>Marcar para deseleccionar</p>
         <p className='alergicConfirm__alergics--p2'>o añadir uno nuevo</p>
         <div className='alergicConfirm__alergics--specific'>
-          <button><Link to='/profile/alergics' >Añadir nuevos</Link></button>
+          {/* AQUI HAY QUE HACER UN MAPEO DEL ARRAY DE LAS ALERGIAS QUE SE HA GUARDADO EN EL USUARIO Y SACAR EL NOMBRE DE TODOS LOS COMPONENTES EN FORMA DE BOTÓN */}
+          <button><Link to='/profile/alergics'>Añadir nuevos</Link></button>
         </div>
       </div>
 
