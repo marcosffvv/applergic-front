@@ -21,6 +21,15 @@ export default function RegisterPage () {
     let defPhone = newUser.phone;
     let defPassword = newUser.password;
 
+    const myObjectString = localStorage.getItem('user');    
+    if(myObjectString){
+         let userLoged = JSON.parse(myObjectString)
+
+          defName = userLoged.name;
+          defEmail = userLoged.email;
+          defPhone = userLoged.phone;
+    }
+
     
     const onSubmit = formData => {
       console.log("empezamos a crear nuevo usuario");
