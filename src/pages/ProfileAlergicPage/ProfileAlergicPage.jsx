@@ -11,30 +11,9 @@ const ProfileAlergicPage = () => {
 
   const { setUser, newUser } = useContext(JwtContext);
 
-  const letras = [
-    {word: 'A'},
-    {word: 'C'},
-    {word: 'E'},
-    {word: 'G'},
-    {word: 'H'},
-    {word: 'J'},
-    {word: 'L'},
-    {word: 'M'},
-    {word: 'O'},
-    {word: 'P'},
-    {word: 'Q'},
-    {word: 'S'},
-    {word: 'T'},
-    {word: 'U'},
-    {word: 'V'},
-    {word: 'Z'}
-  ]
-  // const { setJwt } = useContext(JwtContext);
-
   const [miClase, setMiClase] = useState('notSelected');
 
   const navigate = useNavigate();
-
 
   const guardar = () => {
     let completUser = {...newUser, intolerances: alergiasUser};
@@ -95,27 +74,28 @@ const ProfileAlergicPage = () => {
       </div>
 
       <div className='alergicPage__box'>
-        {/* <p>Acceso rápido</p> */}
-        {letras.map((word, i) => (
+        {components.map((word, i) => (
           <li key={i}>
-            <button>{word.word}</button>
+            <button>{word.letter}</button>
           </li>
         ))}
       </div>
 
-      
-
+      {/* AQUI PARA HACER QUE HAYA BOTONES POR CADA LETRA HABRIA QUE TEMER EN EL BACK, EN COMPONENTS, UN OBJETO POR CADA LETRA */}
       <div className='alergicPage__words'>
-      {components.map((item, index) => (
-        <div key={index}>
-            <button className={miClase} onClick={() => addIntolerance(item._id)} id={item._id}>{item.name}</button>
-        </div>
-      ))}
+        {components.map((item, index) => (
+          <div className='alergicPage__words__box' key={index}>
+            <button className='alergicPage__words__box--letter'>{item.letter}</button>
+            <div className='alergicPage__words__box--c'>
+              {item.components.map((component, i) => (                
+                  <button key={i} className='alergicPage__words__box--c--1' onClick={() => addIntolerance(item._id)} id={item._id}>{component.name}</button>
+              ))}
+              </div>
+          </div>
+        ))}
       </div>
 
       <button onClick={guardar} className='alergicPage__btn'>Guardar</button>
-
-      
     </div>
   )
 }

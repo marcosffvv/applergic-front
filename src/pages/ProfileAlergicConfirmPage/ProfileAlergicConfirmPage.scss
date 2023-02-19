@@ -47,7 +47,6 @@
       display: flex;
       margin-left: 25px;
       margin-right: 25px;
-      height: 300px;
       margin-bottom: 60px;
       align-items: flex-end;
 
@@ -55,8 +54,7 @@
         align-items: center;
         justify-content: center;
         height: 30px;
-        width: 120px;
-        padding: 15px;
+        padding: 25px;
         border-radius: 30px;
         display: flex;
         border: 1px solid grey;
@@ -73,13 +71,11 @@
     margin-left: 25px;
     margin-right: 25px;
     border-radius: 7px;
+    font-weight: bold;
     border: none;
     padding: 15px;
     background-color: rgb(4, 225, 250);
     border-color: rgb(4, 225, 250);
-    a{
-      color: white;
-      font-weight: bold;
-    }
+    color: white;
   }
 }
