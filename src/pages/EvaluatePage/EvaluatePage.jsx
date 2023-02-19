@@ -20,7 +20,7 @@ const EvaluatePage = () => {
           <div className="c-evaluate-padre__c-texto-hijo">
             <h3 className="c-evaluate-padre__c-texto-hijo__ppal">¡Gracias por usar Applergic!</h3>
             <h3 className="c-evaluate-padre__c-texto-hijo__texto">Por favor, evalua</h3>
-            <h3>tu experiencia.</h3>
+            <h3 className="c-evaluate-padre__c-texto-hijo__texto">tu experiencia.</h3>
           </div>
         
           <div className="c-evaluate-padre__c-stars-hijo">
