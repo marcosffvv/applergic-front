@@ -9,7 +9,7 @@
     }
 
     &-png{
-        width: 3vh;
+        width: 4vh;
     }
 }
 
@@ -70,11 +70,42 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 100%;
+    
     background-color: white;
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    background: #00ffff00;
+    border: none;
+
+    &-save{
+    width: 100%;
+    margin-bottom: 1vh;
+    display: flex;
+    align-items: center;
+    border-style: none;
+    border-radius: 1vh;
+    color: white;
+    justify-content: space-around;
+    background-color: #26c7dc;
+    height: 6vh;
+    font-family: "Monserrat-Estandart";
+    font-size: 15px;
+    }
 }
 
 .btndiv{
     width: 100%;
     margin-top: 3vh;
+}
+
+.dates{
+    margin-bottom: 1vh;
+}
+
+.btnFuntion{
+    background: #00ffff00;
+    border: none;
 }

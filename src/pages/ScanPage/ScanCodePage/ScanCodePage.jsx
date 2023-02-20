@@ -1,35 +1,20 @@
-// import React from 'react'
-// import Quagga from "quagga";
+import React, { useState } from "react";
+import BarcodeScannerComponent from "react-webcam-barcode-scanner";
+
+export default function ScanCodePage() {
+  const [data, setData] = useState("Not Found");
+
+  return (
+    <>
+      <BarcodeScannerComponent
+        onUpdate={(err, result) => {
+          if (result) setData(result.text);
+          else setData("Not Found");
+        }}
+      />
+      <p>{data}</p>
+    </>
+  );
+}
 
 
-// const Quagga = require('quagga').default; // Common JS (important: default)
-
-// export default function ScanCodePage(){
-
-    
-//     const initScanCodePage = () => {
-//         Quagga.init({
-//             inputStream : {
-//               name : "Live",
-//               type : "LiveStream",
-//               target: document.querySelector('#yourElement')    // Or '#yourElement' (optional)
-//             },
-//             decoder : {
-//               readers : ["code_128_reader"]
-//             }
-//           }, function(err) {
-//               if (err) {
-//                   console.log(err);
-//                   return
-//               }
-//               console.log("Initialization finished. Ready to start");
-//               Quagga.start();
-//           });
-
-    
-//     }
-
-//       return <div>pruebaScan</div>;
-
-
-//   }

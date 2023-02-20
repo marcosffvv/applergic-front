@@ -1,57 +1,83 @@
 import "./DiaryPage.scss"
-import axios from "axios"
 import { Link } from "react-router-dom"
-import { useEffect, useState} from "react"
-// import { useContext } from "react"
+import { useContext, useEffect, useState} from "react"
+import { JwtContext } from "../../shared/contexts/JwtContext"
+import { API } from "../../shared/services/api"
 import calendar from "../../assets/calendario.png"
 import filter from "../../assets/filter.png"
 import edit from "../../assets/edit.png"
-// import { JwtContext } from '../../shared/contexts/JwtContext';
-
 import CrossComponet from '../../components/CrossComponet/CrossComponent'
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 
 
 export default function DiaryPage() {
   const [products, setProducts] = useState([]);
-  // const {newUser} = useContext(JwtContext);
+  const {newUser, setUser} = useContext(JwtContext);
 
-    useEffect(() => {
-      const getProducts = async () => {
-      const res = await axios.get("http://localhost:5001/products");
-      console.log(res.data)
-      setProducts(res.data)
+  useEffect(() => {
+    const getProducts = () => {
+      API.post('products/user', JSON.parse(newUser)).then(res => {
+        console.log("JSONnewUser", JSON.parse(newUser));
+        console.log("res", res);
+        console.log("res.dat", res.data);
+        let myUser = JSON.parse(newUser);
+        console.log("usuario",myUser);
+        let arrayNuevo = res.data;
+        console.log("mostrando red.data", res.data);
+        const updatedArray = arrayNuevo.map((item) => {
+          // console.log(myUser.diaryProducts);
+          const product = myUser.diaryProducts.find((p) => p._id === item._id);
+          const date = new Date(product.date);
+          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+          const formattedDate = date.toLocaleDateString('es-ES', options);
+          return {
+            ...item,
+            fecha: formattedDate,
+            notas: product.notes,
+          };
+        });
+        
+        setProducts(updatedArray);
+        // console.log(updatedArray);       
+        })      
     }
+    getProducts();
+  }, [newUser]);
 
-      getProducts();
-    }, []);
 
+  
+  // Función para eliminar un producto del array
+  const deleteProduct = (productId) => {
+    const newProducts = products.filter((product) => product._id !== productId);
+    setProducts(newProducts);
+   
+  }
 
-  // console.log(newUser);
-  // useEffect(() => {
-  //   const postProducts = async () => {
-  //     const res = await axios.post("http://localhost:5001/products/user", newUser);
-  //     console.log(res.data)
-  //     console.log('probando2');
-  //     setProducts(res.data)
-  //   }
-
-  //   postProducts();
-  // }, [newUser]);
-
+  //Función para guardar los productos del usuario
+  const saveDiary = () => {
+    let completUser = JSON.parse(newUser);
+    completUser = {...completUser, diaryProducts: products};
+    console.log(completUser);
+    // console.log(JSON.parse(completUser));
+    // console.log(JSON.parse(newUser));
+    API.put('users/update', completUser).then(res => {
+      console.log(res.data);
+      localStorage.setItem('user', JSON.stringify(res.data));
+      setUser(JSON.stringify(res.data));
+    })
+  }
 
   return(
       <>
-         <div className='editDiary'>
-         <Link to="/diary"><img className='editDiary-png' src ={calendar} alt="calendar"/></Link>
-         <Link to="/diary"><img className='editDiary-png' src ={filter} alt="filter"/></Link>
-         <CrossComponet ruta={'/home'}></CrossComponet>
-         </div>  
-       
-       <div className='tittle'>
-         <p className='tittle-Bold'>¿Incluimos la <br></br> selección en tu <br></br> diario? </p>
-         <p className='tittle-info'>Añade tus comentarios para <br></br> completar la información</p>
-       </div>
+        <div className='editDiary'>
+            <img className='editDiary-png' src ={calendar} alt="calendar"/>
+            <img className='editDiary-png' src ={filter} alt="filter"/>
+            <CrossComponet ruta={'/home'}></CrossComponet>
+        </div>  
+        <div className='tittle'>
+           <p className='tittle-Bold'>¿Incluimos la <br></br> selección en tu <br></br> diario? </p>
+           <p className='tittle-info'>Añade tus comentarios para <br></br> completar la información</p>
+        </div>
     
 
        {products.map((item,index) => (
@@ -59,22 +85,24 @@ export default function DiaryPage() {
             <div className='products-container'>
               <img className='products-img' src={item.img} alt="" /></div>
             <div className='products-container_dates'>
-              <p>fecha:</p>
-              <figcaption>{item.name}</figcaption>
-              <p>Notas:</p>
+              <p className="dates">{item.fecha}</p>
+              <figcaption className="dates">{item.name}</figcaption>
+              <p className="dates">Notas:{item.notas}</p>
             </div>
             <div className='products-container_cross'>
-            <CrossComponet ruta={'/home'}></CrossComponet>
-            <Link to="/diary"><img className='editDiary-png' src ={edit} alt="edit"/></Link>
-            </div>
-            {/* <p>{item.brand}</p> */}  
+            {/* Botón para eliminar el producto */}
+            <button className="btnFuntion" onClick={() => deleteProduct(item._id)}><CrossComponet></CrossComponet></button> 
+              {/* <CrossComponet></CrossComponet> */}
+              <Link to="/diary"><img className='editDiary-png' src ={edit} alt="edit"/></Link>
+            </div> 
         </div> 
     ))}
         <div className='btndiv'>
-          <div className='btncomponent'>
-          <ButtonComponent ruta={'/home'} name={'Guardar'}></ButtonComponent>
-          <ButtonComponent ruta={'/home'} name={'Generar informe'}></ButtonComponent>
-        </div>
+           <div className='btncomponent'>
+              <button className='btncomponent-save' onClick={() => saveDiary()}>Guardar</button> 
+              {/* <ButtonComponent name={'Guardar'}></ButtonComponent> */}
+              <ButtonComponent ruta={'/home'} name={'Generar informe'}></ButtonComponent>
+           </div>
         </div>
         
       </>
