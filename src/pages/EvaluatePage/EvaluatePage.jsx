@@ -9,9 +9,9 @@ import StarsComponent from '../../components/StarsComponent/StarsComponent';
 const EvaluatePage = () => {
   return (
     <div className='evaluate-container'>
-     
-        <VolverComponent ruta={'/home'}></VolverComponent>
-
+      <div className="volver-component">
+        <VolverComponent  ruta={'/home'}></VolverComponent>
+      </div>
         <div className="c-evaluate-padre">
           <div className="c-evaluate-padre__c-logo-hijo">
             <img className="c-evaluate-padre__c-logo-hijo__img-logo" src={LogoEvaluate} alt="img-logo"/>
@@ -24,7 +24,7 @@ const EvaluatePage = () => {
           </div>
         
           <div className="c-evaluate-padre__c-stars-hijo">
-            <StarsComponent score={2}></StarsComponent>
+            <StarsComponent></StarsComponent>
           </div>
 
           <div className="c-evaluate-padre__link-hijo">
