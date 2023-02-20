@@ -3,56 +3,60 @@ import "./ProfileAlergicPage.scss";
 import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 import VolverComponent from '../../components/VolverComponent/VolverComponent';
-import axios from 'axios';
+import { API } from "../../shared/services/api";
 import { JwtContext } from '../../shared/contexts/JwtContext';
 
-const ProfileAlergicPage = () => {  
+const ProfileAlergicPage = () => {
 
   const { setUser, newUser } = useContext(JwtContext);
-
-  // const [miClase, setMiClase] = useState('notSelected');
-
+  const [components, setComponentes] = useState([]);
+  const [arrayLetras, setArrayLetras] = useState([]);
   const navigate = useNavigate();
 
+  let alergiasUser = [];
+  let nameAlergias = [];
+
+  //ESTA ES LA LLAMADA A LOS COMPONENTES
+  useEffect(() => {
+    const getComponents = async () => {
+      console.log("getting components");
+      API.get('components').then(res => {
+        // localStorage.setItem('components', JSON.stringify(res.data));
+        setComponentes(res.data);
+        cargarArrayLetras(res.data);
+        // console.log(res.data);
+        // console.log(components);
+      })
+    }
+    getComponents();
+  }, [])
+
+  const cargarArrayLetras = (componentes) => {
+    const primeraLetra = [...componentes];
+    setComponentes(primeraLetra)
+    const firstLetters = primeraLetra.map(str => str.name.charAt(0));
+    setArrayLetras(firstLetters);
+  }
+
   const guardar = () => {
-    let completUser = {...newUser, intolerances: alergiasUser};
+    let completUser = {...newUser, intolerances: alergiasUser, nameIntolerances: nameAlergias};
     setUser(completUser);
     navigate('/profile/alergics/confirm');
   }
 
-  const [components, setComponentes] = useState([]);
 
-  // const claseSelected = 'selected';
-  // const claseNotSelected = 'notSelected';
-
-  const getComponents = async () => {
-    const res = await axios.get("http://localhost:5001/components");
-    console.log("consoling components");
-    setComponentes(res.data)
-  }
-  useEffect(() => {getComponents()}, []);
-
-  // const getComponentsWord = async () => {
-  //   console.log("getting components");
-  //       API.get('components').then(res => {
-  //         localStorage.setItem('components', JSON.stringify(res.data))
-  //         console.log(res.data);
-  //       })
-  // }
-  // useEffect(() => {getComponentsWord()}, [])
-  
-  let alergiasUser = [];
-  // let noAlergico = [];
-
-  const addIntolerance = (myId) => {
-    const foundItem = alergiasUser.find((item) => item === myId);
+  const addIntolerance = (component) => {
+    const foundItem = alergiasUser.find((item) => item === component._id);
       if (foundItem) {
         console.log('Elemento eliminado de alergias');
-        alergiasUser = alergiasUser.filter((item) => item !== myId);
+        alergiasUser = alergiasUser.filter((item) => item !== component._id);
+        nameAlergias = nameAlergias.filter((item) => item._id !== component._id)
         console.log(alergiasUser);
+        console.log(nameAlergias);
       } else {
         console.log('Elemento añadido a alergias');
-        alergiasUser = [...alergiasUser, myId];
+        alergiasUser = [...alergiasUser, component._id];
+        nameAlergias = [...nameAlergias, component];
         // setMiClase('selected');
         console.log(alergiasUser);
       }
@@ -71,25 +75,28 @@ const ProfileAlergicPage = () => {
       </div>
 
       <div className='alergicPage__box'>
-        {components.map((word, i) => (
-          <li key={i}>
-            <button>{word.letter}</button>
-          </li>
-        ))}
+        {arrayLetras.map((letra, index) => {
+          return arrayLetras.indexOf(letra) === index ? (<button key={index}>{letra}</button>) : null;
+        })}
       </div>
 
-      {/* AQUI PARA HACER QUE HAYA BOTONES POR CADA LETRA HABRIA QUE TEMER EN EL BACK, EN COMPONENTS, UN OBJETO POR CADA LETRA */}
       <div className='alergicPage__words'>
-        {components.map((item, index) => (
-          <div className='alergicPage__words__box' key={index}>
-            <button className='alergicPage__words__box--letter'>{item.letter}</button>
-            <div className='alergicPage__words__box--c'>
-              {item.components.map((component, i) => (                
-                  <button key={i} className='alergicPage__words__box--c--1' onClick={() => addIntolerance(component.id)} id={component.id}>{component.name}</button>
-              ))}
+        <div className='alergicPage__words__box'>
+          {arrayLetras.map((letra, index) => {
+            return arrayLetras.indexOf(letra) === index ?
+            ( <div key={index}>
+                <button className='alergicPage__words__box--letter' >{letra}</button>
+                <div className='alergicPage__words__box--c'>
+                  {components.map((component) => (
+                  component.name[0] === letra &&  <button className='alergicPage__words__box--c--1' key={component._id} onClick={() =>
+                  addIntolerance(component)} id={component.id}>{component.name}</button>
+                  ))}
+                </div>
               </div>
-          </div>
-        ))}
+            ) : null; 
+          })}
+          
+        </div>
       </div>
 
       <button onClick={guardar} className='alergicPage__btn'>Guardar</button>
