@@ -4,9 +4,7 @@ import "./CrossComponent.scss";
 
 const CrossComponet = ({ruta}) => {
   return (
-    <div className='crossComponent'>
-      <Link to={ruta}>X</Link>
-    </div>
+      <Link className='crossComponent' to={ruta}>X</Link> 
   )
 }
 
