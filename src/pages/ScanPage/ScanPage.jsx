@@ -3,7 +3,7 @@ import CrossComponet from '../../components/CrossComponet/CrossComponent'
 import cbarras from '../../../src/assets/codigobarras.png'
 import qr from '../../../src/assets/qr.png'
 import nfc from '../../../src/assets/nfc.png'
-// import ScanCodePage from './ScanCodePage/ScanCodePage'
+import ScanCodePage from './ScanCodePage/ScanCodePage'
 import { Link } from 'react-router-dom';
 import "./ScanPage.scss"
 
@@ -21,20 +21,20 @@ export default function ScanPage(){
             
         </div>
       </div>
-
-      <div className='scancodepage'></div>
-      {/* <ScanCodePage></ScanCodePage> */}
+      <ScanCodePage></ScanCodePage>
+      
+       
 
       <div className='linksScan'>
-      <Link to = {'/home'}><button className="buttonScan">
+      <Link to = {''}><button className="buttonScan">
             <div><img className='imgScan' src ={cbarras} alt="buttonScan"/></div>
       </button></Link>
 
-      <Link to = {'/home'}><button className="buttonQr">
+      <Link to = {''}><button className="buttonQr">
             <div><img className='imgScan' src ={qr} alt="buttonScan"/></div>
       </button></Link>
 
-      <Link to = {'/home'}><button className="buttonNfc">
+      <Link to = {''}><button className="buttonNfc">
             <div><img className='imgScan' src ={nfc} alt="buttonScan"/></div>
       </button></Link>
       </div>
