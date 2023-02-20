@@ -1,0 +1,162 @@
+.result{
+    min-height: 100vh;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    margin: 0 auto;
+
+    &__body{
+        width: 90%; 
+        max-width: 600px;               
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap:20px;
+        &--left{
+            width: 10%;
+        }
+        &--center{
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            &--ok{                
+                padding: 10px;
+                border: 10px solid rgb(131,216,173);
+                border-radius: 15px;
+            }
+            &--ko{
+                border: 5px solid rgb(251,146,170);                
+            }
+            &--nd{
+                border: 5px solid rgb(251,146,170);                
+            }
+            &--link{
+                width:min-content;
+                background-color: #595f65;
+            }
+        }
+        &sign--ok{
+
+        }
+        &sign--ko{
+            
+        }
+        &sign--nd{
+            
+        }
+
+        &--rigth{
+            width: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap:10px;
+        }
+        &--img{
+            width: 150px;
+            height: 150px;
+            object-fit:scale-down;
+        }
+        &--ico{
+            width: 48px;
+            height: 48px;
+            object-fit:scale-down;
+        }
+        &--ico:hover{ 
+            filter: invert(75%);
+        }
+  
+    }
+
+
+    &__title{
+        font-family: Monserrat-Bold;
+        font-size: 20px;
+        margin-top: 30px;    
+        margin-bottom: 50px;
+        max-width: 200px;
+        text-align: center;
+    }
+    &__subtitle{
+        color: rgb(89, 95, 101);
+        font-size: 17px;     
+        font-weight: 600;
+        margin-bottom: 30px;       
+    }
+    &__name{
+        font-family: Monserrat-Bold;
+        font-size: 20px;
+        margin-top: 30px;    
+        margin-bottom: 50px;
+        max-width: 200px;
+        text-align: center;
+        color:rgb(54, 56, 55);
+    }
+    &__brand{
+        color:rgb(168,168,168);
+        font-size: 15px;     
+        font-weight: 600;
+        margin-bottom: 30px;       
+    }
+
+
+  
+
+    &__btn{
+        width:auto;
+        font-size: 22px;
+        color: white;
+        background-color: #cccccc;
+        border: none;
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        // 70faff
+        // 00cadf        
+    }
+    &__btn:hover{
+        background-color: #27c7dc;
+    }
+
+    &__volver{
+        position: relative;
+        left: -158px;      
+        top:30px;
+        color: #27c7dc;
+    }
+    &__blue{
+        color: #27c7dc;
+    }
+
+    &__txt{         
+        color:#595f65;    
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid rgb(116, 116, 116);
+        font-size: 15px;
+        height: 40px;
+        font-family: "Monserrat-Estandart"; 
+    }
+    &__txt::placeholder{       
+        color:#d4d2d2;          
+    }
+    &__pwd{
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid grey;
+        font-size: 15px;
+        height: 40px;
+    }
+    &__new-link{
+        color: #27c7dc;
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
