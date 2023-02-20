@@ -10,6 +10,10 @@ const ProfileAlergicConfirmPage = () => {
 
   const { newUser } = useContext(JwtContext);
 
+  let alergiasUser = newUser.intolerances;
+  console.log(newUser);
+  console.log(alergiasUser);
+
   const navigate = useNavigate();
 
   const guardar = () => {
@@ -21,6 +25,7 @@ const ProfileAlergicConfirmPage = () => {
 
   return (
     <div className='alergicConfirm'>
+
       <div className='alergicConfirm__out'>
         <CrossComponet ruta={'/login'}></CrossComponet>
       </div>
@@ -31,12 +36,18 @@ const ProfileAlergicConfirmPage = () => {
       </div>
 
       <div className='alergicConfirm__alergics'>
+
         <p className='alergicConfirm__alergics--p1'>Marcar para deseleccionar</p>
         <p className='alergicConfirm__alergics--p2'>o añadir uno nuevo</p>
+
         <div className='alergicConfirm__alergics--specific'>
-          {/* AQUI HAY QUE HACER UN MAPEO DEL ARRAY DE LAS ALERGIAS QUE SE HA GUARDADO EN EL USUARIO Y SACAR EL NOMBRE DE TODOS LOS COMPONENTES EN FORMA DE BOTÓN */}
-          <button><Link to='/profile/alergics'>Añadir nuevos</Link></button>
+          {newUser.nameIntolerances.map((intolerancias, index) => (
+            <button className='alergicConfirm__alergics--specific--alergics' key={index}>{intolerancias.name}</button>
+          ))}
         </div>
+
+        <button className='alergicConfirm__alergics--btn'><Link to='/profile/alergics'>Añadir nuevos</Link></button>
+
       </div>
 
       <button onClick={guardar} className='alergicConfirm__btn'>CONFIRMAR</button>
