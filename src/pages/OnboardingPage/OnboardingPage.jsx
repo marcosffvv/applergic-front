@@ -30,7 +30,7 @@ const OnboardingPage = () => {
       description: "Viaja donde quieras. Tendrás a tu disposicion un traductor off-line y tu informe de alergias e intolerancias traducido al idioma local.",
     },
   ];
-
+  
   const [intro, setIntro] = useState(true);
 
   setTimeout(() => {
@@ -51,7 +51,12 @@ const OnboardingPage = () => {
       </div>
     );
   };
-
+  const next = () =>{
+    //acceder al boton del carousel
+    const nextButton = document.querySelector(".p-carousel-next");
+    nextButton.click();
+    //console.log(nextButton);
+  }
   return (
     <>
       {intro ? (
@@ -68,7 +73,7 @@ const OnboardingPage = () => {
 
           <div className="nav-container">
             <Link to="/login" className="nav-link">Saltar</Link>
-            <Link to="/login" className="nav-link">Siguiente</Link>
+            <button className="nav-container__nav-button" onClick={()=>next()}>Siguiente {'>'}</button>
           </div>
         </div>
       )}
