@@ -35,7 +35,7 @@ const OnboardingPage = () => {
 
   setTimeout(() => {
     setIntro(false);
-  }, 1000);
+  }, 2000);
 
   const carouselTemplate = (pagina) => {
     return (
