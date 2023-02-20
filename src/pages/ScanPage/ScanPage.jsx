@@ -7,6 +7,8 @@ import nfc from '../../../src/assets/nfc.png'
 import { Link } from 'react-router-dom';
 import "./ScanPage.scss"
 
+
+
 export default function ScanPage(){
   return(
     <div>
@@ -15,6 +17,8 @@ export default function ScanPage(){
          <div className='info'>
             <p className='titleBold'>Escaneando...</p>
             <p className='titleNormal'>Tan solo tienes que centrar el<br></br>código de barras del producto <br></br> en el recuadro.</p> 
+            <input type="text" className='scan_input'></input>
+            
         </div>
       </div>
 

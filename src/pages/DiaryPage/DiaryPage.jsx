@@ -1,7 +1,7 @@
 import "./DiaryPage.scss"
-import axios from "axios"
+// import axios from "axios"
 import { Link } from "react-router-dom"
-import { useEffect, useState} from "react"
+import { useContext, useEffect, useState} from "react"
 // import { useContext } from "react"
 import calendar from "../../assets/calendario.png"
 import filter from "../../assets/filter.png"
@@ -10,34 +10,34 @@ import edit from "../../assets/edit.png"
 
 import CrossComponet from '../../components/CrossComponet/CrossComponent'
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
+import { JwtContext } from "../../shared/contexts/JwtContext"
+import { API } from "../../shared/services/api"
 
 
 export default function DiaryPage() {
   const [products, setProducts] = useState([]);
-  // const {newUser} = useContext(JwtContext);
+  const {newUser} = useContext(JwtContext);
 
-    useEffect(() => {
-      const getProducts = async () => {
-      const res = await axios.get("http://localhost:5001/products");
-      console.log(res.data)
-      setProducts(res.data)
+  useEffect(() => {
+    const getProducts = () => {
+      API.post('products/user', newUser).then(res => {
+        setProducts(res.data);
+        let arrayNuevo = res.data;
+        // primero crear un array vacío
+        // en ese array vacío se mete todos los datos
+        // hay que añadir a products la fecha y las notas del usuario
+        // ¿como?
+        // buscando en el array   newUser.diaryProducts  por el campo _id
+        // y una vez localizado, buscar dicho _id en el array products
+        // y añadir dos propiedades nuevas. fecha y notas
+        // se usa setProducts(nuevoarray)
+        setProducts(arrayNuevo);
+        console.log(res.data);       
+        })      
     }
+    getProducts();
+  }, [newUser]);
 
-      getProducts();
-    }, []);
-
-
-  // console.log(newUser);
-  // useEffect(() => {
-  //   const postProducts = async () => {
-  //     const res = await axios.post("http://localhost:5001/products/user", newUser);
-  //     console.log(res.data)
-  //     console.log('probando2');
-  //     setProducts(res.data)
-  //   }
-
-  //   postProducts();
-  // }, [newUser]);
 
 
   return(
