@@ -12,9 +12,12 @@ import './ScanResultPage.scss';
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent';
 import { API } from '../../shared/services/api';
 
-
-
-
+const valoresPorDefecto={"_id": "63f34eabfb3892b2cfad604c",
+"name": "PRODUCTO NO ENCONTRADO",
+"brand": "NO ENCONTRADO",
+"EAN": "1111111111",
+"img":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/2048px-Imagen_no_disponible.svg.png",
+"components": []};
 
 const ScanResultPage = () => {
   const { barCode } = useContext(JwtContext);
@@ -35,10 +38,8 @@ const ScanResultPage = () => {
         })
         
       } catch (error) {
-        
+        setDatos({valoresPorDefecto});
       }
-
-
     }
     getProduct();
   }, []);
