@@ -12,14 +12,12 @@ import CrossComponet from '../../components/CrossComponet/CrossComponent'
 
 export default function DiaryPage() {
   const [products, setProducts] = useState([]);
-  // //
+  //
   // const [editing, setEditing] = useState(false);
   // const [editNotes, setEditNotes] = useState('');
-  // //
+  //
   const {newUser, setUser} = useContext(JwtContext);
   // console.log("nuevousauario", JSON.parse(newUser));
-
- 
 
   useEffect(() => {
     const getProducts = () => {
