@@ -9,23 +9,25 @@ import { JwtContext } from '../../shared/contexts/JwtContext';
 const ProfileAlergicPage = () => {
 
   const { setUser, newUser } = useContext(JwtContext);
+
   const [components, setComponentes] = useState([]);
   const [arrayLetras, setArrayLetras] = useState([]);
+  const [miClase, setMiClase] = useState('alergicPage__words__box--c--1');
+
   const navigate = useNavigate();
 
   let alergiasUser = [];
   let nameAlergias = [];
 
-  //ESTA ES LA LLAMADA A LOS COMPONENTES
+  // const claseSelected = 'selected';
+  // const claseNotSelected = 'alergicPage__words__box--c--1';
+
   useEffect(() => {
     const getComponents = async () => {
       console.log("getting components");
       API.get('components').then(res => {
-        // localStorage.setItem('components', JSON.stringify(res.data));
         setComponentes(res.data);
         cargarArrayLetras(res.data);
-        // console.log(res.data);
-        // console.log(components);
       })
     }
     getComponents();
@@ -44,23 +46,40 @@ const ProfileAlergicPage = () => {
     navigate('/profile/alergics/confirm');
   }
 
-
   const addIntolerance = (component) => {
     const foundItem = alergiasUser.find((item) => item === component._id);
       if (foundItem) {
         console.log('Elemento eliminado de alergias');
         alergiasUser = alergiasUser.filter((item) => item !== component._id);
-        nameAlergias = nameAlergias.filter((item) => item._id !== component._id)
+        nameAlergias = nameAlergias.filter((item) => item._id !== component._id);
         console.log(alergiasUser);
         console.log(nameAlergias);
       } else {
         console.log('Elemento añadido a alergias');
         alergiasUser = [...alergiasUser, component._id];
         nameAlergias = [...nameAlergias, component];
-        // setMiClase('selected');
         console.log(alergiasUser);
       }
   }
+
+  const changeColor = (event) => {
+    let contador = 0;
+    console.log(contador);
+    if (contador === 0) {
+    event.target.className = 'selected';
+    contador += contador;
+    console.log(contador);
+    }
+    else {
+    event.target.className = 'alergicPage__words__box--c--1';
+    contador -= contador;
+    console.log(contador);
+    }
+  }
+
+  // const changeColorLetra = (color) => {
+  //   color.target.className = 'selectedBtn';
+  // };
 
   return (
     
@@ -85,11 +104,15 @@ const ProfileAlergicPage = () => {
           {arrayLetras.map((letra, index) => {
             return arrayLetras.indexOf(letra) === index ?
             ( <div key={index}>
-                <button className='alergicPage__words__box--letter' >{letra}</button>
+              {/* onClick={() => changeColorLetra(color)} */}
+                <button  className='alergicPage__words__box--letter'>{letra}</button>
                 <div className='alergicPage__words__box--c'>
                   {components.map((component) => (
-                  component.name[0] === letra &&  <button className='alergicPage__words__box--c--1' key={component._id} onClick={() =>
-                  addIntolerance(component)} id={component.id}>{component.name}</button>
+                  component.name[0] === letra &&  <button className={miClase} key={component._id} onClick={(event) =>{
+                    addIntolerance(component)
+                    changeColor(event)
+                  }
+                  } id={component.id}>{component.name}</button>
                   ))}
                 </div>
               </div>

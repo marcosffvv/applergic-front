@@ -6,6 +6,14 @@ import CrossComponet from '../../components/CrossComponet/CrossComponent';
 import perfect from '../../assets/alergics-finish.png';
 
 const ProfileEndPage = () => {
+
+  // const guardar = () => {
+  //   API.post('users/register', newUser).then(res => {
+  //   console.log('Register user',);
+  //   navigate('/profile/end')
+  //   })
+  // }
+
   return (
     <div className='profileEnd'>
       <div className='profileEnd__header'>
