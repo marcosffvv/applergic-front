@@ -9,8 +9,11 @@
     }
 
     &-png{
+        background: #faebd700;
+        border: none;
         width: 4vh;
     }
+
 }
 
 .tittle{
@@ -46,8 +49,12 @@
     justify-content: space-evenly;
 
     &-container{
+        width: 180px;
+        height: 180px;
         display: flex;
+        flex-direction: column;
         align-items: center;
+        border: 10px solid rgb(131, 216, 173);
 
         &_dates{
             padding: 3vh;
@@ -62,7 +69,10 @@
     }
 
     &-img{
-        max-height: 8vh;  
+        position: relative;
+        width: 150px;
+        height: 150px;
+        object-fit: scale-down; 
     }
 }
 
@@ -129,4 +139,8 @@
     max-height: 350px;
     max-width: 450px;
     margin: auto;
+}
+
+.pencil{
+    width: 4vh;
 }

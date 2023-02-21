@@ -17,7 +17,7 @@ const HomePage = () => {
       <div className='home'>
         <div className='home-menu'>
         <PopupDemo></PopupDemo>
-            <Link to = {'/home/profile'}><img className="home-menu_buttonInfo" src={buttonInfo} alt="buttonInfo"/></Link>   
+            <Link to = {'/profile'}><img className="home-menu_buttonInfo" src={buttonInfo} alt="buttonInfo"/></Link>   
         </div>
         <div className='home-logo'>
             <img className="home-menu_logohome" src={logohome} alt="logohome" />   
