@@ -65,13 +65,13 @@ const OnboardingPage = () => {
         </div>
       ) : (
         <div className="container-main">
-          <div className="imglogo">
+          <div className="container-main__imglogo">
             <img src={ApplergicTextoLogo} alt="ApplergicTextoLogo" className="img-logo-texto"/>
           </div>
 
           <Carousel value={paginas} numVisible={1} numScroll={1} itemTemplate={carouselTemplate}/>
 
-          <div className="nav-container">
+          <div className="container-main__nav-container">
             <Link to="/login" className="nav-link">Saltar</Link>
             <button className="nav-container__nav-button" onClick={()=>next()}>Siguiente {'>'}</button>
           </div>
