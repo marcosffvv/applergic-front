@@ -4,6 +4,7 @@ import { TieredMenu } from 'primereact/tieredmenu';
 // import { Link } from "react-router-dom"
 // import menuhamburguesa from "../../assets/HomeAssets/menuhamburguesa.png";
 import "./TiredMenu.scss"
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -16,8 +17,8 @@ export default function PopupDemo() {
         {
             label: 'Perfil',
             icon: 'pi pi-fw pi-user',
-            url: '/profile'
-            
+            url: '/profile'  
+             
                
         },
         {
