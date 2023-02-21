@@ -1,4 +1,3 @@
-
 import React from 'react'
 import "./HomePage.scss"
 import buttonInfo from "../../assets/HomeAssets/buttoninfo.png"
@@ -48,7 +47,7 @@ const HomePage = () => {
                 <div><p>S.O.S</p></div>
                 <div><p className='ocult'>S.O.S</p></div>
               </button></Link>
-              <p>¿Necesitas ayuda urgente? Contactamos con emergencias.</p>
+              <p>Â¿Necesitas ayuda urgente? Contactamos con emergencias.</p>
             </div>
         </div>
         
