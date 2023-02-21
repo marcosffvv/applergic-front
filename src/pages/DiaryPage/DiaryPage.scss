@@ -94,6 +94,21 @@
     font-family: "Monserrat-Estandart";
     font-size: 15px;
     }
+
+    &-informe{
+        width: 100%;
+    margin-bottom: 1vh;
+    display: flex;
+    align-items: center;
+    border-style: none;
+    border-radius: 1vh;
+    color: #26c7dc;
+    justify-content: space-around;
+    background-color: #26c7dc00;
+    height: 6vh;
+    font-family: "Monserrat-Estandart";
+    font-size: 15px;
+    }
 }
 
 .btndiv{
@@ -108,4 +123,10 @@
 .btnFuntion{
     background: #00ffff00;
     border: none;
+}
+
+.app-prueba{
+    max-height: 350px;
+    max-width: 450px;
+    margin: auto;
 }

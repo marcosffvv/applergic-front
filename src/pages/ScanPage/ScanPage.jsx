@@ -11,7 +11,7 @@ import "./ScanPage.scss"
 
 export default function ScanPage(){
   return(
-    <div>
+    <div className='app-div'>
       <div className='close'><CrossComponet ruta={'/home'}></CrossComponet></div>
       <div className='info-p'>
          <div className='info'>

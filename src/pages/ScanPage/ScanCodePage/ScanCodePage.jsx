@@ -9,10 +9,10 @@ export default function ScanCodePage() {
       <BarcodeScannerComponent
         onUpdate={(err, result) => {
           if (result) setData(result.text);
-          else setData("Not Found");
+          else setData("No se encuentra el producto");
         }}
       />
-      <p>{data}</p>
+      <p className="scan-error">{data}</p>
     </>
   );
 }

@@ -4,6 +4,9 @@
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 2vh;
+    max-height: 350px;
+    max-width: 500px;
+    
 
     &-img{
         width: 6vh;
