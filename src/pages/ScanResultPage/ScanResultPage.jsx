@@ -9,7 +9,6 @@ import signOk from "../../assets/ok.png";
 import signKo from "../../assets/ko.png";
 import signNd from "../../assets/nd.png";
 import './ScanResultPage.scss';
-import { BtnBlue } from '../../components/BtnComponent/BtnComponent';
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent';
 import { API } from '../../shared/services/api';
 
@@ -18,36 +17,41 @@ import { API } from '../../shared/services/api';
 
 
 const ScanResultPage = () => {
-  const { newUser } = useContext(JwtContext);
-  const navigate = useNavigate();
+  const { barCode } = useContext(JwtContext);
+  // const navigate = useNavigate();
   const [product, setProduct] = useState([]);
-  
-  let productName="Galletas de avena orgánicas";
-  let productBrand="Green Valley";
-  let productImg="https://m.media-amazon.com/images/I/81EfaZgPMTL._AC_UF894,1000_QL80_.jpg";
-  let productComponents="Ingredientes:";
+  const [productComponents, setProductComponents] = useState();  
+  let componentsTxt="";
 
-  useEffect(() => {
+
+  // llama al get con el código de barras que recibe
+   useEffect(() => {
     const getProduct = () => {
-      API.get('products/2002345678901').then(res=>{
-        setProduct(res.data);
-        console.log(res.data);
-        setDatos(res.data);
-      })    
+      try {
+        API.get('products/'+barCode).then(res=>{
+          setProduct(res.data);
+          console.log("get del producto:",res.data);        
+          setDatos(res.data);
+        })
+        
+      } catch (error) {
+        
+      }
+
+
     }
     getProduct();
   }, []);
-
-  const setDatos=(product)=>{
-    productName = product.name;
-    productBrand = product.brand;
-    productImg = product.img;
-    let arrayComponents=product.components;
+  
+  // para cargar en un texto el array de componentes
+  const setDatos=(fdata)=>{       
+    let arrayComponents=fdata.components;
     arrayComponents.forEach(element => {
-      productComponents += element.name+', ';
-    });
+      componentsTxt += element.name+', ';
+    });    
+    console.log("product Components",componentsTxt );
+    setProductComponents(componentsTxt);
   }
-
 
   let result='ok';
   let resultText='';
@@ -73,11 +77,6 @@ const ScanResultPage = () => {
     sign = signNd;
   }
   
-
-
-
-
-
   return (
     <div className='result'>                
         <div className='result__volver'>
@@ -93,7 +92,7 @@ const ScanResultPage = () => {
           <div className='result__body--left'> 
           </div>           
           <div className={resultClassName}>              
-              <img className='result__body--img' src={productImg} alt='pic not found'></img>
+              <img className='result__body--img' src={product.img} alt='pic not found'></img>
               <div className={resultClassNameSign}>
                   <img className="icono"  src={sign} alt="sign"></img>
               </div>
@@ -108,13 +107,13 @@ const ScanResultPage = () => {
 
 
         <div className='result__name'>
-            {productName}
+            {product.name}
         </div>
         <div className='result__brand'>
-            {productBrand}
+            {product.brand}
         </div>
         <div className='result__components'>
-            {productComponents}
+            <span className='result__components--bold'>Ingredientes:</span>{productComponents}
         </div>
         <ButtonComponent ruta='/scan' name='Escanea otro producto'></ButtonComponent>        
 
