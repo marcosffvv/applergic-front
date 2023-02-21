@@ -21,6 +21,7 @@ const valoresPorDefecto={"_id": "63f34eabfb3892b2cfad604c",
 
 const ScanResultPage = () => {
   const { barCode } = useContext(JwtContext);
+  const {newUser, setUser} = useContext(JwtContext);
   // const navigate = useNavigate();
   const [product, setProduct] = useState([]);
   const [productComponents, setProductComponents] = useState();  
@@ -30,10 +31,12 @@ const ScanResultPage = () => {
   // llama al get con el código de barras que recibe
    useEffect(() => {
     const getProduct = () => {
+
       try {
+        console.log("get del producto:",barCode);
         API.get('products/'+barCode).then(res=>{
           setProduct(res.data);
-          console.log("get del producto:",res.data);        
+          console.log("res del producto:",res.data);        
           setDatos(res.data);
         })
         
@@ -77,6 +80,34 @@ const ScanResultPage = () => {
     resultClassNameSign='signnd';
     sign = signNd;
   }
+
+  const formatDate = (myDate) =>{
+    const date = new Date(myDate);
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+    const formattedDate = date.toLocaleDateString('es-ES', options);
+
+    return formattedDate
+  } 
+
+  // guardar el producto en el dirario del usuario.
+  const saveDiaryProduct=()=>{
+    let completUser = JSON.parse(localStorage.getItem('user'));  
+    // let completUser = JSON.parse(newUser);
+
+    console.log('completuser',completUser);
+
+    let arrayDiary = [...completUser.diaryProducts];
+    const date = new Date().getDate;
+    arrayDiary = [...arrayDiary,{_id: product._id, date:date, notes:"sin notas"}];
+    //esto de abajo guardaba sólo el alimento pero se cargaba el diario del Producto pero no guardar realmente los cambios
+    completUser = {...completUser, diaryProducts:[...arrayDiary]};    
+    API.put('users/update', completUser).then(res => {
+      // console.log(res.data);
+      localStorage.setItem('user', JSON.stringify(res.data));
+      setUser(JSON.stringify(res.data));
+    })
+
+  }
   
   return (
     <div className='result'>                
@@ -93,7 +124,7 @@ const ScanResultPage = () => {
           <div className='result__body--left'> 
           </div>           
           <div className={resultClassName}>              
-              <img className='result__body--img' src={product.img} alt='pic not found'></img>
+              <img className='result__body--img' src={product?.img} alt='pic not found'></img>
               <div className={resultClassNameSign}>
                   <img className="icono"  src={sign} alt="sign"></img>
               </div>
@@ -101,7 +132,7 @@ const ScanResultPage = () => {
 
           <div className='result__body--rigth'>             
                 <Link to="/evaluate" className='result__body--link'  ><img className='result__body--ico' src ={start} alt="home"/></Link>
-                <Link to="/diary" className='result__body--link' ><img className='result__body--ico' src ={diario} alt="home"/></Link>
+                <img onClick={saveDiaryProduct} className='result__body--ico'  src={diario} alt="save" />                
                 <Link to="/home" className='result__body--link' ><img className='result__body--ico' src ={share} alt="home"/></Link>
           </div>
         </div>
