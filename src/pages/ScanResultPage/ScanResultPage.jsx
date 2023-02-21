@@ -88,21 +88,24 @@ const ScanResultPage = () => {
     sign = signNd;
   }
 
-  // const formatDate = (myDate) =>{
-  //   const date = new Date(myDate);
-  //   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-  //   const formattedDate = date.toLocaleDateString('es-ES', options);
-
-  //   return formattedDate
-  // } 
 
   // guardar el producto en el dirario del usuario.
   const saveDiaryProduct=()=>{
     let completUser = JSON.parse(localStorage.getItem('user'));  
     console.log('completuser',completUser);
     let arrayDiary = [...completUser.diaryProducts];
-    const date = new Date().getDate;
-    arrayDiary = [...arrayDiary,{_id: product._id, date:date, notes:"sin notas"}];    
+
+    const fecha = new Date();
+  const fechaUTC = new Date(Date.UTC(
+  fecha.getUTCFullYear(),
+  fecha.getUTCMonth(),
+  fecha.getUTCDate(),
+  fecha.getUTCHours(),
+  fecha.getUTCMinutes(),
+  fecha.getUTCSeconds()
+));
+    
+    arrayDiary = [...arrayDiary,{_id: product._id, date:fechaUTC , notes:"sin notas"}];    
     completUser = {...completUser, diaryProducts:[...arrayDiary]};    
     API.put('users/update', completUser).then(res => {    
       localStorage.setItem('user', JSON.stringify(res.data));
