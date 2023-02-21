@@ -23,44 +23,47 @@ export default function GalleryPage() {
     const getProducts = () => {
       API.get('products/populate').then(res => {
         setProducts(res.data);
-
         })
     }
     getProducts();
   }, []);
 
   return(
-      <>
-      <div className="app-prueba">
-        <div className='editDiary'>
+      <div className="gallery">
+
+        editdiary
+        <div className='gallery__cross'>  
             <CrossComponet ruta={'/home'}></CrossComponet>
         </div>
-        <div className='tittle'>
+
+        <div className='gallery__tittle'>
            <p className='tittle-Bold'>Galería de productos</p>
         </div>
-        <div className='products'>
-          {products.map((item, index) => (
-            <div className="products__div">
-            <div  key={index} className='products__div-container'>
-              <img className='products-img' src={item.img} alt={item.name}/>
-            </div>
 
-            <div className='products__div-container_dates'>
-              <h3 className="dates">{item.name}</h3>
-              <p>Marca: {item.brand}</p>
-              <p>EAN: {item.EAN}</p>
-              <br></br>
-              <h4>Ingredientes:</h4>
-              {item.components.map((component, index) => (
-                <ul key={index}>
-                  <li>{component.name}</li>
-                </ul>
-              ))}
-            </div>
+        <div className='gallery__products'>
+          {products.map((item, index) => (
+            <div key={index} className="gallery__products__div">
+
+              <div className='gallery__products__div--img'>
+                <img className='gallery__products__div--img-1' src={item.img} alt={item.name}/>
+              </div>
+
+              <div className='gallery__products__div--card'>
+                <h3 className="dates">{item.name}</h3>
+                <p>Marca: {item.brand}</p>
+                <p>EAN: {item.EAN}</p>
+                <br></br>
+                <h4>Ingredientes:</h4>
+                {item.components.map((component, i) => (
+                  <ul key={i}>
+                    <li>{component.name}</li>
+                  </ul>
+                ))}
+              </div>
             </div>
           ))}
         </div>
-        </div>
-      </>
+
+      </div>
   )
 }
