@@ -17,7 +17,7 @@ export default function ScanPage(){
          <div className='info'>
             <p className='titleBold'>Escaneando...</p>
             <p className='titleNormal'>Tan solo tienes que centrar el<br></br>código de barras del producto <br></br> en el recuadro.</p> 
-            <input type="text" className='scan_input'></input>
+            {/* <input type="text" className='scan_input'></input> */}
             
         </div>
       </div>
