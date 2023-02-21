@@ -13,6 +13,7 @@ import tick from "../../assets/ok.png"
 
 export default function DiaryPage() {
   const [products, setProducts] = useState([]);
+
   const {newUser, setUser} = useContext(JwtContext);
 
   useEffect(() => {
