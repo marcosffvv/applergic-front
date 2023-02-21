@@ -119,13 +119,19 @@
         margin-bottom: 20px;       
     }
     &__components{
+        max-width: 300px;
         color:rgb(168, 168, 168);
+        margin-bottom: 20px;
+        &--bold{
+            font-weight: 600;
+        }
     }
+    
 
 
   
 
-    &__btn{
+    &__btn{       
         width:auto;
         font-size: 22px;
         color: white;

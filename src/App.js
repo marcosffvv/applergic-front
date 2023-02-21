@@ -24,9 +24,10 @@ function App() {
   const [jwt, setJwt] = useState(localStorage.getItem('token') || null);
  
   const [newUser,setUser] = useState({});
+  const [barCode,setBarcode] = useState('2002345678901');  // por defecto la salsa de tomate
 
   return (
-    <JwtContext.Provider value={{ jwt, setJwt , newUser, setUser }} >
+    <JwtContext.Provider value={{ jwt, setJwt , newUser, setUser, barCode, setBarcode }} >
       
       <Router>
         <div className="app">

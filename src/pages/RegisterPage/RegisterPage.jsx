@@ -88,9 +88,9 @@ export default function RegisterPage () {
                       {...register("phone",{required: true})}/>
           
               <input className='register__txt' id="password"  defaultValue={defPassword}
-                    placeholder='Password' 
+                    placeholder='Password'                     
                     type="password"                     
-                    {...register("password",{required: true})}/>
+                    {...register("password",{required: true , pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{4,12}$/ })}/>
               
               <BtnGrey showText='Guardar perfil'></BtnGrey>
               {/* <input className='register__btn'  type="submit" value="Guardar perfil"/> */}
