@@ -1,5 +1,5 @@
 import "./DiaryPage.scss"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { useContext, useEffect, useState} from "react"
 import { JwtContext } from "../../shared/contexts/JwtContext"
 import { API } from "../../shared/services/api"
@@ -12,8 +12,14 @@ import CrossComponet from '../../components/CrossComponet/CrossComponent'
 
 export default function DiaryPage() {
   const [products, setProducts] = useState([]);
+  // //
+  // const [editing, setEditing] = useState(false);
+  // const [editNotes, setEditNotes] = useState('');
+  // //
   const {newUser, setUser} = useContext(JwtContext);
   // console.log("nuevousauario", JSON.parse(newUser));
+
+ 
 
   useEffect(() => {
     const getProducts = () => {
@@ -42,12 +48,13 @@ export default function DiaryPage() {
         });
 
         setProducts(updatedArray);
-        console.log(updatedArray);
+        // console.log(updatedArray);
         })
     }
     getProducts();
   }, [newUser]);
 
+  //formatear la fecha en una función fuera de get products
   const formatDate = (myDate) =>{
     const date = new Date(myDate);
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
@@ -60,9 +67,17 @@ export default function DiaryPage() {
   const deleteProduct = (productId) => {
     const newProducts = products.filter((product) => product._id !== productId);
     setProducts(newProducts);
-    console.log(products);
+    // console.log(products);
 
   }
+
+  const editProduct = () => {
+    
+  }
+
+
+  
+  
 
   //Función para guardar los productos del usuario
   const saveDiary = () => {
@@ -79,26 +94,6 @@ export default function DiaryPage() {
       setUser(JSON.stringify(res.data));
     })
   }
-
-  // const saveDiary = () => {
-  //   let completUser = JSON.parse(newUser);
-  //   completUser = {
-  //     ...completUser,
-  //     diaryProducts: {
-  //       ...completUser.diaryProducts,
-  //       [new Date().toDateString()]: {
-  //         products: products,
-  //         notes: "Escribe aquí tus notas"
-  //       }
-  //     }
-  //   };
-  //   API.put('users/update', completUser).then(res => {
-  //     localStorage.setItem('user', JSON.stringify(res.data));
-  //     setUser(JSON.stringify(res.data));
-  //   });
-  // }
-
-  
 
   return(
       <><div className="app-prueba">
@@ -123,10 +118,8 @@ export default function DiaryPage() {
               <p className="dates">Notas:{item.notas}</p>
             </div>
             <div className='products-container_cross'>
-            {/* Botón para eliminar el producto */}
-            <button className="btnFuntion" onClick={() => deleteProduct(item._id)}><CrossComponet></CrossComponet></button>
-              {/* <CrossComponet></CrossComponet> */}
-              <Link to="/diary"><img className='editDiary-png' src ={edit} alt="edit"/></Link>
+              <button className="btnFuntion" onClick={() => deleteProduct(item._id)}><CrossComponet></CrossComponet></button>
+              <button className='editDiary-png' onClick={() => editProduct(item)}><img className="pencil" src={edit} alt="edit" /></button>
             </div>
         </div>
     ))}
