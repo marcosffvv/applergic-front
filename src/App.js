@@ -4,60 +4,56 @@ import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 
 import OnboardingPage from './pages/OnboardingPage/OnboardingPage';
 import LoginPage from './pages/LoginPage/LoginPage';
-// import RegisterPage from '';
-// import ProfilePage from '';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ProfileAlergicPage from './pages/ProfileAlergicPage/ProfileAlergicPage';
-// import ProfileEmergencyPage from '';
+import ProfileEmergencyPage from './pages/ProfileEmergencyPage/ProfileEmergencyPage';
 import ProfileAlergicConfirmPage from './pages/ProfileAlergicConfirmPage/ProfileAlergicConfirmPage';
 import ProfileEndPage from './pages/ProfileEndPage/ProfileEndPage';
-// import ScanPage from '';
-// import EvaluatePage from '';
-// import ScanResultPage from '';
+import ScanPage from './pages/ScanPage/ScanPage';
+import EvaluatePage from './pages/EvaluatePage/EvaluatePage';
+import ScanResultPage from './pages/ScanResultPage/ScanResultPage';
 import HomePage from './pages/HomePage/HomePage';
-// import DiaryPage from '';
+import DiaryPage from './pages/DiaryPage/DiaryPage';
+import GalleryPage from "./pages/GalleryPage/GalleryPage";
+import { JwtContext} from './shared/contexts/JwtContext';
 
-
+import React, { useState } from 'react';
 
 
 function App() {
-
-  // const {t, i18n} = useTranslation(['translation']);
-
-  // const changeLanguaje = (code) => {
-  //   i18n.changeLanguage(code);
-  // }
-  // const [number2, setNumber2] = useState(0)
-  // const [number, setNumber] = useState(2000)
+  const [jwt, setJwt] = useState(localStorage.getItem('token') || null);
  
-  // let location = useLocation();
-  // console.log(location.pathname);
+  const [newUser,setUser] = useState({});
+  const [barCode,setBarcode] = useState('2002345678901');  // por defecto la salsa de tomate
 
   return (
-    <>
-    {/* <MyContext.Provider value={{ activeUser, setActiveUser, discon }}> */}
+    <JwtContext.Provider value={{ jwt, setJwt , newUser, setUser, barCode, setBarcode }} >
+      
       <Router>
         <div className="app">
-          <Routes>
-              {/* el / es el bienvenido y el menú con el slides */}
+          <Routes>             
               <Route path="/" element={<OnboardingPage></OnboardingPage>}/>
               <Route path="/login" element={<LoginPage></LoginPage>}/>
-              {/* <Route path="/register" element={<RegisterPage></RegisterPage>}/>
-              <Route path="/profile" element={<ProfilePage></ProfilePage>}/> */}
-              {/* <Route path="/profile/emergency" element={<ProfileEmergencyPage></ProfileEmergencyPage>}/> */}
+              <Route path="/register" element={<RegisterPage></RegisterPage>}/>
+              <Route path="/profile" element={<ProfilePage></ProfilePage>}/>
+              <Route path="/profile/emergency" element={<ProfileEmergencyPage></ProfileEmergencyPage>}/> 
               <Route path="/profile/alergics" element={<ProfileAlergicPage></ProfileAlergicPage>}/>
               <Route path="/profile/alergics/confirm" element={<ProfileAlergicConfirmPage></ProfileAlergicConfirmPage>}/>
               <Route path="/profile/end" element={<ProfileEndPage></ProfileEndPage>}/>
-              {/* <Route path="/scan" element={<ScanPage></ScanPage>}/>
+              <Route path="/scan" element={<ScanPage></ScanPage>}/>
               <Route path="/evaluate" element={<EvaluatePage></EvaluatePage>}/>
-              <Route path="/scan/result" element={<ScanResultPage></ScanResultPage>}/> */}
+              <Route path="/scan/result" element={<ScanResultPage></ScanResultPage>}/>
               <Route path="/home" element={<HomePage></HomePage>}/>
-              {/* <Route path="/diary" element={<DiaryPage></DiaryPage>}/> */}
+              <Route path="/diary" element={<DiaryPage></DiaryPage>}/>
+              <Route path="/gallery" element={<GalleryPage></GalleryPage>}/>
 
           </Routes>
         </div>
       </Router>
     {/* </MyContext.Provider> */}
-    </>
+
+    </JwtContext.Provider>
   );
 }
 
