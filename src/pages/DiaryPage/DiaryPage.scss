@@ -49,15 +49,18 @@
     justify-content: space-evenly;
 
     &-container{
-        width: 180px;
-        height: 180px;
+        height: 95px;
+        width: 95px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 10px solid rgb(131, 216, 173);
+        border: 5px solid rgb(131, 216, 173);
+        margin-top: 1vh;
+        border-radius: 10px;
+
 
         &_dates{
-            padding: 3vh;
+            padding: 1vh;
         }
 
         &_cross{
@@ -70,9 +73,21 @@
 
     &-img{
         position: relative;
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 70px;
         object-fit: scale-down; 
+        margin-top: 1vh;
+    }
+
+    &-tick{
+        position: relative;
+        top: -96px;
+        left: -39px;
+        width: 30px;
+        min-height: 30px;
+        border-radius: 50%;
+        background-color: rgb(131,216,173);
+        padding: 1vh
     }
 }
 
