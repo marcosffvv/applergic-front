@@ -1,7 +1,9 @@
 .close{
     display: flex;
     justify-content: flex-end;
-    margin: 4vh;
+    margin: 4vh ;
+    width: 100%;
+    margin-right: 15vh;
 }
 
 .info-p{
@@ -33,6 +35,7 @@
     border-radius: 50%;
     border: none;
     background-color: #26c7dc;
+    margin-right: 5vh;
     
 }
 
@@ -40,6 +43,7 @@
     border-radius: 50%;
     border: none;
     background-color: #d8d8d8;
+    margin-right: 5vh;
 }
 
 .buttonNfc{
@@ -51,6 +55,7 @@
 .imgScan{
     width: 8vh;
     padding: 1vh;
+
 }
 
 .imgQr{
@@ -72,4 +77,12 @@
 video{
     width: 40vh;
     margin: 3vh;
+}
+.app-div{
+    max-height: 350px;
+    max-width: 450px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

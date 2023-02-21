@@ -1,5 +1,12 @@
 .home{
 
+
+    max-height: 350px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    
     &-menu{
         display: flex;
         flex-direction: row;

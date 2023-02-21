@@ -7,7 +7,7 @@ import calendar from "../../assets/calendario.png"
 import filter from "../../assets/filter.png"
 import edit from "../../assets/edit.png"
 import CrossComponet from '../../components/CrossComponet/CrossComponent'
-import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
+// import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 
 
 export default function DiaryPage() {
@@ -68,7 +68,7 @@ export default function DiaryPage() {
   }
 
   return(
-      <>
+      <><div className="app-prueba">
         <div className='editDiary'>
             <img className='editDiary-png' src ={calendar} alt="calendar"/>
             <img className='editDiary-png' src ={filter} alt="filter"/>
@@ -100,11 +100,10 @@ export default function DiaryPage() {
         <div className='btndiv'>
            <div className='btncomponent'>
               <button className='btncomponent-save' onClick={() => saveDiary()}>Guardar</button> 
-              {/* <ButtonComponent name={'Guardar'}></ButtonComponent> */}
-              <ButtonComponent ruta={'/home'} name={'Generar informe'}></ButtonComponent>
+              <button className="btncomponent-informe" ruta={''}>Generar informe</button>
            </div>
         </div>
-        
+        </div>
       </>
       
   ) 
