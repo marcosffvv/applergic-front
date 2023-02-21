@@ -14,7 +14,7 @@ export default function LoginPage () {
     const navigate = useNavigate();
 
     const onSubmit = formData => {
-        console.log("submit");
+        console.log("submit",formData);
         API.post('users/login', formData).then(res => {
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('user', JSON.stringify(res.data.user))
