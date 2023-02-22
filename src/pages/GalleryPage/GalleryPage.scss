@@ -1,19 +1,21 @@
-
 .gallery{
 
   &__cross{
-    
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+    align-items: center;
   }  
   &__tittle{
     display: flex;
     align-items: center;
     flex-direction: column;
 
-    &-Bold{
+    &--bold{
       font-family: "Monserrat-Bold";
       text-align: center;
-      font-size: 20px;
-      margin-bottom: 2vh;
+      font-size: 25px;
+      margin-bottom: 20px;
     }
   }
   &__products{
@@ -21,96 +23,43 @@
     flex-direction: column;
     padding: 2vh;
     justify-content: space-evenly;
+    align-items: center;
 
     &__div{
-      width: 380px;
-      height: 380px;
+      width: 360px;
+      height: 300px;
       display: flex;
-      justify-content: center;
       flex-direction: row;
       align-items: center;
-      border: 10px solid rgb(131, 216, 173);
-
+      border: 5px solid grey;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      
       &--img{
 
         &-1{
-          position: relative;
           width: 150px;
           height: 150px;
-          object-fit: scale-down; 
+          object-fit: scale-down;
+          padding-left: 15px;
+          padding-right: 15px;
         }
       }
       &--card{
-        h3{
+        padding-right: 10px ;
 
+        &--h3{
+          font-family: "Monserrat-Bold";
+          padding-bottom: 10px;
+          font-size: 20px;
         }
         p{
-
+          display: flex;
+          span{
+          font-weight: bold;
+          padding-right: 5px;
+          }
         }
-        h4{
-
-        }
-      }
-    }
-
-  }
-}
-
-
-
-
-
-
-
-
-.editDiary{
-  display: flex;
-  justify-content: flex-end;
-  margin: 4vh 3vh 2vh 0vh;
-  align-items: center;
-
-  a{
-      margin: 2vh;
-  }
-
-  &-png{
-      background: #faebd700;
-      border: none;
-      width: 4vh;
-  }
-
-}
-
-
-.products{
-  display: flex;
-  flex-direction: column;
-  padding: 2vh;
-  justify-content: space-evenly;
-
-  &__div{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    &-container{
-      width: 180px;
-      height: 180px;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      border: 10px solid rgb(131, 216, 173);
-
-      &_dates{
-        padding: 3vh;
-      }
-
-      &_cross{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
       }
     }
   }
