@@ -65,6 +65,7 @@ export default function DiaryPage() {
       setUser(JSON.stringify(res.data));
     })
   }
+ 
 
   return(
       <><div className="app-prueba">
