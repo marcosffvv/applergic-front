@@ -16,9 +16,11 @@ import ScanResultPage from './pages/ScanResultPage/ScanResultPage';
 import HomePage from './pages/HomePage/HomePage';
 import DiaryPage from './pages/DiaryPage/DiaryPage';
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
+import CreditsPage from "./pages/CreditsPage/CreditsPage";
 import { JwtContext} from './shared/contexts/JwtContext';
 
 import React, { useState } from 'react';
+import ProfileEditPage from './pages/ProfileEditPage/ProfileEditPage';
 
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
               <Route path="/login" element={<LoginPage></LoginPage>}/>
               <Route path="/register" element={<RegisterPage></RegisterPage>}/>
               <Route path="/profile" element={<ProfilePage></ProfilePage>}/>
+              <Route path="/users/update2" element={<ProfileEditPage></ProfileEditPage>}/> 
               <Route path="/profile/emergency" element={<ProfileEmergencyPage></ProfileEmergencyPage>}/> 
               <Route path="/profile/alergics" element={<ProfileAlergicPage></ProfileAlergicPage>}/>
               <Route path="/profile/alergics/confirm" element={<ProfileAlergicConfirmPage></ProfileAlergicConfirmPage>}/>
@@ -47,6 +50,7 @@ function App() {
               <Route path="/home" element={<HomePage></HomePage>}/>
               <Route path="/diary" element={<DiaryPage></DiaryPage>}/>
               <Route path="/gallery" element={<GalleryPage></GalleryPage>}/>
+              <Route path="/credits" element={<CreditsPage></CreditsPage>}/>
 
           </Routes>
         </div>
