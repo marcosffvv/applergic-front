@@ -1,7 +1,6 @@
 import React from 'react';
 import "./ProfileEndPage.scss";
 import { Link } from "react-router-dom";
-import VolverComponent from '../../components/VolverComponent/VolverComponent';
 import CrossComponet from '../../components/CrossComponet/CrossComponent';
 import perfect from '../../assets/alergics-finish.png';
 

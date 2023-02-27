@@ -1,11 +1,8 @@
 import React, { useRef, useState } from 'react'; 
 import { Button } from 'primereact/button';
 import { TieredMenu } from 'primereact/tieredmenu';
-// import { Link } from "react-router-dom"
-// import menuhamburguesa from "../../assets/HomeAssets/menuhamburguesa.png";
 import "./TiredMenu.scss"
 import { useNavigate } from 'react-router';
-// import { NavLink } from 'react-router-dom';
 
 
 
@@ -14,7 +11,7 @@ import { useNavigate } from 'react-router';
 export default function PopupDemo() {
     const menu = useRef(null);
     const navigate=useNavigate();
-    const [items, setItems] = useState([
+    const [items] = useState([
         
         {
             label: 'Perfil',
